@@ -115,10 +115,52 @@ section h2 {
 .services li { margin-bottom:0.6rem; font-size:1rem; color:#cbd5e1; }
 .services li::marker { color:#fbbf24; }
 
-/* PROFILE */
-.profile img { width:100%; border-radius:12px; margin-bottom:1rem; }
-.profile .linkedin i { font-size:1.5rem; color:#fbbf24; transition: transform 0.3s ease; }
-.profile .linkedin:hover i { transform: scale(1.2); }
+
+/* TEAM PROFILE IMAGES */
+
+.profile img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;   /* fits entire image without cropping */
+  background-color: #1e293b; /* optional, fills space around image */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* CONTACT INFO UNDER TEAM */
+.profile .contact {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+.profile .contact i {
+  color: #fbbf24;
+  margin-right: 0.5rem;
+}
+
+/* LINKEDIN ICON */
+.profile .linkedin i {
+  font-size: 1.5rem;
+  color: #fbbf24;
+  margin-top: 0.8rem;
+  transition: transform 0.3s ease;
+}
+.profile .linkedin:hover i {
+  transform: scale(1.2);
+}
+
+/* Align content top & ensure equal card height */
+.grid-2 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
 
 /* TESTIMONIALS */
 .testimonial { flex:0 0 100%; opacity:0; transform:translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; margin:0 1rem; }
@@ -135,4 +177,33 @@ section h2 {
   .hero-title { font-size:2rem; }
   .hero-subtitle { font-size:1rem; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* GRID for SERVICES – 2 cards per row */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  gap: 2rem; /* spacing between cards */
+}
+
+.grid-2 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+
+/* Tablet fallback – 1 card per row */
+@media(max-width:1024px){
+  .grid-2 {
+    grid-template-columns: 1fr; /* 1 card per row */
+  }
+}
+
+/* Mobile fallback – 1 card per row */
+@media(max-width:768px){
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
 }
