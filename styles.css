@@ -321,24 +321,47 @@ h2 {
 /* =======================
    CONTACT
 ======================= */
-.contact {
-  text-align: center;
+.footer {
   background: #111827;
+  color: #f8fafc;
+  padding: 4rem 1rem 2rem;
 }
 
-.contact-container {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.contact p {
-  color: #cbd5e1;
-  margin-bottom: 1rem;
-}
-
-.contact a {
+.footer a {
   color: #fbbf24;
+  text-decoration: none;
 }
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+}
+
+.footer-column h3 {
+  color: #fbbf24;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.footer-column p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+
 
 /* =======================
    SCROLL ANIMATION (SAFE)
