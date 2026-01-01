@@ -302,20 +302,21 @@ h2 {
 /* =======================
    TESTIMONIALS
 ======================= */
-.testimonial-carousel {
-  text-align: center;
-}
-
-.testimonial-carousel blockquote {
+#testimonial-carousel blockquote {
   font-style: italic;
   color: #e5e7eb;
-  margin-bottom: 1rem;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
-.testimonial-carousel span {
+#testimonial-carousel blockquote span {
+  display: block;
+  margin-top: 1rem;
   color: #fbbf24;
   font-weight: 700;
 }
+
 
 /* =======================
    CONTACT
