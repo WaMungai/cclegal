@@ -25,39 +25,55 @@ const cards = Array.from(carousel.children);
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 
-let valuesIndex = 0;
-const totalCards = cards.length;
-const visibleCards = 3;
+let currentIndex = 0;
 
+// Calculate scroll amount dynamically
 function getScrollAmount() {
-  return cards[0].offsetWidth + parseInt(getComputedStyle(cards[0]).marginRight);
+  return cards[0].offsetWidth + parseInt(getComputedStyle(carousel).gap);
 }
 
-function updateActiveCard() {
-  cards.forEach((card, index) => {
-    card.classList.remove('active');
-    if (index >= valuesIndex && index < valuesIndex + visibleCards) {
-      card.classList.add('active');
-    }
-  });
-}
-
-updateActiveCard();
-
+// Show next card
 nextBtn.addEventListener('click', () => {
-  valuesIndex = (valuesIndex + 1) % totalCards;
   carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-  updateActiveCard();
 });
 
+// Show previous card
 prevBtn.addEventListener('click', () => {
-  valuesIndex = (valuesIndex - 1 + totalCards) % totalCards;
   carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-  updateActiveCard();
 });
 
+// Auto-scroll every 4 seconds
 setInterval(() => {
-  valuesIndex = (valuesIndex + 1) % totalCards;
   carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-  updateActiveCard();
 }, 4000);
+
+// Touch support for swipe
+let isDown = false;
+let startX;
+let scrollLeft;
+
+carousel.addEventListener('mousedown', (e) => {
+  isDown = true;
+  carousel.classList.add('dragging');
+  startX = e.pageX - carousel.offsetLeft;
+  scrollLeft = carousel.scrollLeft;
+});
+
+carousel.addEventListener('mouseleave', () => {
+  isDown = false;
+  carousel.classList.remove('dragging');
+});
+
+carousel.addEventListener('mouseup', () => {
+  isDown = false;
+  carousel.classList.remove('dragging');
+});
+
+carousel.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - carousel.offsetLeft;
+  const walk = (x - startX) * 2; // scroll-fast
+  carousel.scrollLeft = scrollLeft - walk;
+});
+
