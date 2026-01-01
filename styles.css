@@ -40,6 +40,47 @@ section h2 {
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
 /* NAVBAR */
+/* NAVBAR */
+.navbar {
+  background: #111827;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO – LEFT */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fbbf24;
+  text-decoration: none;
+}
+
+/* NAV LINKS – RIGHT */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links li a {
+  color: #f8fafc;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #fbbf24;
+}
+
 /* HAMBURGER BUTTON */
 .hamburger {
   display: none;
@@ -63,13 +104,8 @@ section h2 {
   transition: all 0.3s ease;
 }
 
-/* NAV LINKS – MOBILE DEFAULT HIDDEN */
-.nav-links {
-  display: flex;
-  gap: 2rem;
-}
-
-@media(max-width:768px){
+/* RESPONSIVE – MOBILE */
+@media (max-width: 768px) {
   .hamburger {
     display: flex;
   }
@@ -77,23 +113,33 @@ section h2 {
   .nav-links {
     position: absolute;
     top: 70px; /* below navbar */
-    left: 0;
+    right: 0;
     width: 100%;
     flex-direction: column;
     background: #111827;
-    display: none; /* hidden by default */
+    display: none;
     text-align: center;
     padding: 1rem 0;
+  }
+
+  .nav-links.show {
+    display: flex;
   }
 
   .nav-links li {
     margin: 1rem 0;
   }
 
-  .nav-links.show {
-    display: flex;
+  nav {
+    order: 2;
+  }
+
+  .logo {
+    order: 1;
   }
 }
+
+/* HAMBURGER ANIMATION */
 .hamburger.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -140,6 +186,18 @@ section h2 {
 .hero-title { font-size:2.5rem; margin-bottom:1rem; }
 .hero-subtitle { font-size:1.2rem; margin-bottom:1rem; color:#cbd5e1; }
 .trust { font-size:0.9rem; color:#fbbf24; margin-bottom:1.5rem; }
+
+/* Divider line */
+section::after {
+  content: "";
+  display: block;
+  width: 60%;
+  max-width: 600px;
+  height: 2px;
+  background-color: #fbbf24; /* gold line */
+  margin: 3rem auto 0 auto; /* center and space below section */
+  border-radius: 1px;
+}
 
 .btn.cta-btn {
   padding:1rem 2rem;
@@ -305,3 +363,4 @@ section h2 {
     grid-template-columns: 1fr;
   }
 }
+
