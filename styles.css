@@ -1,9 +1,11 @@
-/* ===== GLOBAL STYLES ===== */
+/* =======================
+   GLOBAL STYLES
+======================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
@@ -35,7 +37,7 @@ section::after {
   max-width: 600px;
   height: 2px;
   background: #fbbf24;
-  margin: 3rem auto 0 auto;
+  margin: 3rem auto 0;
   border-radius: 1px;
 }
 
@@ -46,7 +48,9 @@ h2 {
   text-align: center;
 }
 
-/* ===== NAVBAR ===== */
+/* =======================
+   NAVBAR
+======================= */
 .navbar {
   background: #111827;
   padding: 1rem 0;
@@ -57,8 +61,8 @@ h2 {
 
 .navbar-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
@@ -68,89 +72,47 @@ h2 {
 }
 
 .nav-links {
+  list-style: none;
   display: flex;
   gap: 2rem;
-  list-style: none;
 }
 
-.nav-links li a {
+.nav-links a {
   color: #f8fafc;
   font-weight: 500;
   transition: color 0.3s;
 }
 
-.nav-links li a:hover {
+.nav-links a:hover {
   color: #fbbf24;
 }
 
+/* Mobile Nav */
 .hamburger {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
-  width: 25px;
-  height: 20px;
+  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  z-index: 1100;
 }
 
 .hamburger span {
-  display: block;
-  width: 100%;
+  width: 25px;
   height: 3px;
   background: #fbbf24;
   border-radius: 2px;
-  transition: all 0.3s;
 }
 
-@media (max-width:768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 100%;
-    flex-direction: column;
-    background: #111827;
-    display: none;
-    text-align: center;
-    padding: 1rem 0;
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .nav-links li {
-    margin: 1rem 0;
-  }
-}
-
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* ===== HERO ===== */
+/* =======================
+   HERO
+======================= */
 #hero {
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   text-align: center;
-  min-height: 80vh;
   padding: 0 1rem;
   background: linear-gradient(135deg, #111827, #1f2937);
 }
@@ -162,10 +124,9 @@ h2 {
 
 #hero p {
   max-width: 700px;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
   color: #cbd5e1;
   font-size: 1.1rem;
-  line-height: 1.5;
 }
 
 .cta-btn {
@@ -179,28 +140,23 @@ h2 {
 }
 
 .cta-btn:hover {
-  transform: translateY(-3px);
   background: #fcd34d;
+  transform: translateY(-3px);
 }
 
-.subtext {
-  margin-top: 1rem;
-  color: #cbd5e1;
-}
-
-/* ===== VALUES / WHY US ===== */
+/* =======================
+   VALUES
+======================= */
 .values-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  justify-content: center;
 }
 
 .value-card {
   background: #1f2937;
   padding: 2rem;
   border-radius: 10px;
-  flex: 1 1 250px;
   text-align: center;
   transition: transform 0.3s;
 }
@@ -215,67 +171,55 @@ h2 {
   margin-bottom: 1rem;
 }
 
-.value-card h3 {
-  margin-bottom: 0.5rem;
-}
-
-/* ===== SERVICES GRID ===== */
+/* =======================
+   SERVICES
+======================= */
 .services-grid {
   display: grid;
-  grid-template-areas:
-    "service1 service2 service3"
-    ". service4 service5 .";
-  grid-gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-items: center;
 }
 
 .service-card {
-  background:#1f2937;
-  padding:2rem;
-  border-radius:10px;
+  background: #1f2937;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 360px;
+  width: 100%;
   transition: transform 0.3s;
 }
+
 .service-card:hover {
   transform: translateY(-5px);
 }
+
 .service-card i {
-  font-size:2rem;
-  color:#fbbf24;
-  margin-bottom:1rem;
+  font-size: 2rem;
+  color: #fbbf24;
+  margin-bottom: 1rem;
 }
-.service-card h3 { margin-bottom:1rem; }
-.service-card ul { list-style:disc; margin-left:1.5rem; }
 
-/* Assign grid areas */
-.service1 { grid-area: service1; }
-.service2 { grid-area: service2; }
-.service3 { grid-area: service3; }
-.service4 { grid-area: service4; }
-.service5 { grid-area: service5; }
+.service-card ul {
+  margin-left: 1.2rem;
+}
 
-/* Responsive */
-@media(max-width:1024px){
+/* Responsive Services */
+@media (max-width: 1024px) {
   .services-grid {
-    grid-template-areas:
-      "service1 service2"
-      "service3 service4"
-      "service5 service5";
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-@media(max-width:768px){
+
+@media (max-width: 768px) {
   .services-grid {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "service1"
-      "service2"
-      "service3"
-      "service4"
-      "service5";
   }
 }
 
-
-
-/* ===== TEAM ===== */
+/* =======================
+   TEAM
+======================= */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -296,63 +240,34 @@ h2 {
   margin-bottom: 1rem;
 }
 
-.team-card h3 {
-  margin-bottom: 0.5rem;
-}
-
 .team-card .role {
   font-size: 0.9rem;
   color: #cbd5e1;
-  margin-bottom: 0.5rem;
 }
 
-.team-card p {
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  color: #e5e7eb;
-}
-
-.team-card a {
-  color: #fbbf24;
-  font-size: 1.2rem;
-  margin: 0 0.25rem;
-  transition: color 0.3s;
-}
-
-.team-card a:hover {
-  color: #fcd34d;
-}
-
-/* ===== TESTIMONIALS ===== */
+/* =======================
+   TESTIMONIALS
+======================= */
 .testimonial-carousel {
-  display: flex;
-  overflow: hidden;
-  flex-direction: column;
-  gap: 2rem;
   text-align: center;
 }
 
 .testimonial-carousel blockquote {
   font-style: italic;
   color: #e5e7eb;
-  display: none;
-}
-
-.testimonial-carousel blockquote:first-child {
-  display: block;
+  margin-bottom: 1rem;
 }
 
 .testimonial-carousel span {
-  display: block;
-  margin-top: 1rem;
   color: #fbbf24;
   font-weight: 700;
 }
 
-/* ===== CONTACT ===== */
+/* =======================
+   CONTACT
+======================= */
 .contact {
   text-align: center;
-  padding: 4rem 1rem;
   background: #111827;
 }
 
@@ -362,38 +277,46 @@ h2 {
 }
 
 .contact p {
-  margin-bottom: 1rem;
   color: #cbd5e1;
-  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
 .contact a {
   color: #fbbf24;
 }
 
-.contact a:hover {
-  text-decoration: underline;
-}
-
-/* ===== SCROLL ANIM ===== */
+/* =======================
+   SCROLL ANIMATION (SAFE)
+======================= */
 .scroll-in {
-  opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
 }
 
 .scroll-in.visible {
-  opacity: 1;
   transform: translateY(0);
+  transition: transform 0.8s ease;
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:768px) {
-  #hero h1 {
-    font-size: 2rem;
+/* =======================
+   RESPONSIVE NAV
+======================= */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    flex-direction: column;
+    background: #111827;
+    padding: 1rem 0;
   }
 
-  #hero p {
-    font-size: 1rem;
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
   }
 }
