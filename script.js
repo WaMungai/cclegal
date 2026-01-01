@@ -6,29 +6,15 @@ scrollCards.forEach((el,i) => {
 });
 
 // Testimonials carousel
-let testimonials = document.querySelectorAll('.testimonial-carousel .testimonial');
-let currentTestimonial = 0;
+let testimonials = document.querySelectorAll('.testimonial');
+let current = 0;
 
-function showTestimonial(index){
-  testimonials.forEach((t,i)=> t.classList.remove('active'));
-  testimonials[index].classList.add('active');
-}
+// Show first testimonial
+testimonials[current].classList.add('active');
 
-// Show first
-showTestimonial(currentTestimonial);
+setInterval(() => {
+  testimonials[current].classList.remove('active');
+  current = (current + 1) % testimonials.length;
+  testimonials[current].classList.add('active');
+}, 5000);
 
-// Auto rotate every 5s
-let testimonialInterval = setInterval(()=>{
-  currentTestimonial = (currentTestimonial +1) % testimonials.length;
-  showTestimonial(currentTestimonial);
-},5000);
-
-// Pause on hover
-const carouselContainer = document.querySelector('.testimonial-carousel');
-carouselContainer.addEventListener('mouseenter', ()=> clearInterval(testimonialInterval));
-carouselContainer.addEventListener('mouseleave', ()=>{
-  testimonialInterval = setInterval(()=>{
-    currentTestimonial = (currentTestimonial +1) % testimonials.length;
-    showTestimonial(currentTestimonial);
-  },5000);
-});

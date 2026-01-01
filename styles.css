@@ -163,11 +163,43 @@ section h2 {
 
 
 /* TESTIMONIALS */
-.testimonial { flex:0 0 100%; opacity:0; transform:translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; margin:0 1rem; }
-.testimonial.active { opacity:1; transform:translateY(0); }
-.testimonial p { color:#cbd5e1; margin-bottom:1.5rem; }
-.testimonial span { color:#fbbf24; font-weight:600; display:block; }
-.testimonial-carousel { display:flex; overflow:hidden; position:relative; }
+.testimonial-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.testimonial {
+  position: absolute;       /* stack on top of each other */
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg,#1f2937,#111827);
+  border-radius: 12px;
+}
+
+.testimonial.active {
+  opacity: 1;
+  position: relative;       /* only active testimonial flows normally */
+}
+
+.testimonial p {
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.testimonial span {
+  color: #fbbf24;
+  font-weight: 600;
+  display: block;
+}
+
 
 /* SCROLL-IN */
 .scroll-in { opacity:1; transform:translateY(0); transition: all 0.8s ease; }
