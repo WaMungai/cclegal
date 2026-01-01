@@ -13,8 +13,33 @@
 </head>
 <body>
 
+   <header class="navbar">
+  <div class="container navbar-container">
+    <a href="#" class="logo">C&C Advocates</a>
+    
+    <!-- Hamburger button for mobile -->
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
   <!-- HERO -->
-  <section class="hero">
+  <section id="hero" class="hero">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       <h1 class="hero-title">Protecting Your Business, Property & Innovation</h1>
@@ -29,7 +54,7 @@
   </section>
 
    <!-- SERVICES -->
-  <section class="services scroll-in">
+  <section id="services" class="services scroll-in">
     <div class="container">
       <h2>What We Focus On</h2>
       <div class="grid-2">
@@ -84,7 +109,7 @@
   </section>
 
   <!-- WHY CHOOSE US -->
-  <section class="why scroll-in">
+  <section id="why" class="why scroll-in">
     <div class="container">
       <h2>Why Choose C&C Advocates</h2>
       <div class="grid-3">
@@ -132,10 +157,8 @@
     </div>
   </section>
 
- 
-
   <!-- TESTIMONIALS -->
-  <section class="testimonials scroll-in">
+  <section id="testimonials" class="testimonials scroll-in">
   <div class="container">
     <h2>What Our Clients Say</h2>
     <div class="testimonial-carousel">
@@ -158,8 +181,6 @@
     </div>
   </div>
 </section>
-
-
 
  <!-- TEAM -->
 <section class="team scroll-in">
@@ -194,7 +215,6 @@
     </div>
   </div>
 </section>
-
 
   <!-- CONTACT (optional placeholder) -->
   <section id="contact" class="contact scroll-in">

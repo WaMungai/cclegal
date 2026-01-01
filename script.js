@@ -18,3 +18,14 @@ setInterval(() => {
   testimonials[current].classList.add('active');
 }, 5000);
 
+//Navbar
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+
+  // Animate hamburger to X
+  hamburger.classList.toggle('open');
+});
+
