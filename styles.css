@@ -107,27 +107,49 @@ h2 {
 /* =======================
    HERO
 ======================= */
-#hero {
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  text-align: center;
   min-height: 80vh;
+  padding: 0 1rem;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  flex-direction: column;
+}
+
+.hero-container {
+  max-width: 900px;       /* optional: control width */
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
-  padding: 0 1rem;
-  background: linear-gradient(135deg, #111827, #1f2937);
+  align-items: center;
 }
 
-#hero h1 {
+
+.hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: #fbbf24;
 }
 
-#hero p {
-  max-width: 700px;
-  margin: 0 auto 2rem;
+.hero-subtitle {
   color: #cbd5e1;
   font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
 }
+
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center; /* ensures buttons are centered */
+}
+
 
 .cta-btn {
   background: #fbbf24;
@@ -140,9 +162,40 @@ h2 {
 }
 
 .cta-btn:hover {
-  background: #fcd34d;
   transform: translateY(-3px);
+  background: #fcd34d;
 }
+
+.secondary-btn {
+  background: transparent;
+  border: 2px solid #fbbf24;
+  color: #fbbf24;
+}
+
+.secondary-btn:hover {
+  background: #fbbf24;
+  color: #111827;
+}
+
+/* About Section */
+#about h2, #about h3 {
+  color: #fbbf24;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#about {
+  text-align: center; /* Center all text inside About section */
+}
+
+#about p {
+  max-width: 900px;
+  margin: 0 auto 1rem auto; /* Keep centered block, add bottom margin */
+  line-height: 1.8;
+  color: #cbd5e1;
+}
+
+
 
 /* =======================
    VALUES
