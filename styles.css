@@ -323,6 +323,70 @@ section h2 {
   margin-bottom: 3rem;
 }
 
+/* Section styling */
+#services {
+  padding: 4rem 2rem;
+  background: #fff;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+}
+
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Service Card */
+.service-card {
+  background: #f9f9f9;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+/* Icon Styling */
+.service-icon {
+  font-size: 2.5rem;
+  color: #0077b6;
+  margin-bottom: 1rem;
+}
+
+/* Card Titles */
+.service-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: #222;
+}
+
+/* Card Descriptions */
+.service-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+
 /* =========================
    VALUES CAROUSEL
 ========================= */
