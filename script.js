@@ -1,79 +1,78 @@
-// ===== Testimonial Carousel =====
-const testimonials = document.querySelectorAll('#testimonial-carousel blockquote');
-let testimonialIndex = 0;
+// ===================== NAVBAR TOGGLE =====================
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
 
-function showTestimonial(index) {
-  testimonials.forEach((testimonial, i) => {
-    testimonial.style.display = i === index ? 'block' : 'none';
-    testimonial.style.opacity = i === index ? 1 : 0;
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+  hamburger.classList.toggle("active");
+});
+
+// ===================== SCROLL-IN ANIMATION =====================
+const scrollElements = document.querySelectorAll(".scroll-in");
+
+const elementInView = (el, offset = 150) => {
+  const elementTop = el.getBoundingClientRect().top;
+  return elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset;
+};
+
+const displayScrollElement = (element) => element.classList.add("scrolled");
+const hideScrollElement = (element) => element.classList.remove("scrolled");
+
+const handleScrollAnimation = () => {
+  scrollElements.forEach((el) => {
+    if (elementInView(el, 150)) displayScrollElement(el);
+    else hideScrollElement(el);
   });
-}
+};
 
-showTestimonial(testimonialIndex);
+window.addEventListener("scroll", handleScrollAnimation);
 
-setInterval(() => {
-  testimonials[testimonialIndex].style.opacity = 0;
-  setTimeout(() => {
+// Trigger on load
+handleScrollAnimation();
+
+// ===================== TESTIMONIAL CAROUSEL =====================
+const testimonialCarousel = document.getElementById("testimonial-carousel");
+if (testimonialCarousel) {
+  let testimonialIndex = 0;
+  const testimonials = testimonialCarousel.querySelectorAll("blockquote");
+
+  const showTestimonial = (index) => {
+    testimonials.forEach((block, i) => {
+      block.style.display = i === index ? "block" : "none";
+    });
+  };
+
+  const nextTestimonial = () => {
     testimonialIndex = (testimonialIndex + 1) % testimonials.length;
     showTestimonial(testimonialIndex);
-  }, 500);
-}, 5000);
+  };
 
-// ===== Values Carousel =====
-const carousel = document.querySelector('.values-carousel');
-const cards = Array.from(carousel.children);
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
+  const prevTestimonial = () => {
+    testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(testimonialIndex);
+  };
 
-let currentIndex = 0;
+  // Auto rotate every 6 seconds
+  setInterval(nextTestimonial, 6000);
 
-// Calculate scroll amount dynamically
-function getScrollAmount() {
-  return cards[0].offsetWidth + parseInt(getComputedStyle(carousel).gap);
+  // Initialize
+  showTestimonial(testimonialIndex);
 }
 
-// Show next card
-nextBtn.addEventListener('click', () => {
-  carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-});
+// ===================== VALUES CAROUSEL =====================
+const valuesWrapper = document.querySelector(".values-carousel-wrapper");
+if (valuesWrapper) {
+  const valuesCarousel = valuesWrapper.querySelector(".values-carousel");
+  const nextBtn = valuesWrapper.querySelector(".next-btn");
+  const prevBtn = valuesWrapper.querySelector(".prev-btn");
 
-// Show previous card
-prevBtn.addEventListener('click', () => {
-  carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-});
+  const scrollAmount = 300;
 
-// Auto-scroll every 4 seconds
-setInterval(() => {
-  carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-}, 4000);
+  nextBtn.addEventListener("click", () => {
+    valuesCarousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  });
 
-// Touch support for swipe
-let isDown = false;
-let startX;
-let scrollLeft;
-
-carousel.addEventListener('mousedown', (e) => {
-  isDown = true;
-  carousel.classList.add('dragging');
-  startX = e.pageX - carousel.offsetLeft;
-  scrollLeft = carousel.scrollLeft;
-});
-
-carousel.addEventListener('mouseleave', () => {
-  isDown = false;
-  carousel.classList.remove('dragging');
-});
-
-carousel.addEventListener('mouseup', () => {
-  isDown = false;
-  carousel.classList.remove('dragging');
-});
-
-carousel.addEventListener('mousemove', (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - carousel.offsetLeft;
-  const walk = (x - startX) * 2; // scroll-fast
-  carousel.scrollLeft = scrollLeft - walk;
-});
-
+  prevBtn.addEventListener("click", () => {
+    valuesCarousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  });
+}
