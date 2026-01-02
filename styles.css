@@ -414,69 +414,69 @@ body {
 }
 
 
-/* =========================
-   VALUES 
-========================= */
-/* Values Section */
-/* Values Section */
-.values-section {
-  padding: 4rem 2rem;
-  background-color: #f9fafb; /* Light neutral background */
-  text-align: center;
+/* ===============================
+   VALUES CAROUSEL
+   =============================== */
+
+/* ===============================
+   SHARED CAROUSEL STYLES
+   =============================== */
+
+/* VALUES CAROUSEL – SQUARE CARDS */
+.values-carousel {
+  display: flex;
+  gap: 2rem;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-.values-section h2 {
-  font-size: 2.5rem;
-  color: #101527; /* Primary brand color */
-  margin-bottom: 3rem;
-}
-
-/* Values Grid */
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Value Cards */
-.value-card {
-  background-color: #101527; /* Primary brand color */
-  color: #fff;
+/* Each value card */
+.values-carousel blockquote {
+  min-width: 280px;          /* controls card size */
+  height: 280px;             /* makes it square */
+  background: #ffffff;
+  border: 2px solid #D4AF37; /* brand accent */
   border-radius: 12px;
-  padding: 2rem 1rem;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  box-shadow: 0 10px 30px rgba(16, 21, 39, 0.08);
 }
 
-.value-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* Icons */
-.value-card i {
-  font-size: 2.5rem;
-  color: #ffc107; /* Accent color */
+/* Icon */
+.values-carousel i {
+  font-size: 2rem;
+  color: #D4AF37;
   margin-bottom: 1rem;
 }
 
-/* Titles */
-.value-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: #fff;
+/* Text */
+.values-carousel p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #101527;
+  margin-bottom: 0.75rem;
 }
 
-/* Paragraphs */
-.value-card p {
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: #f0f0f0;
+/* Label */
+.values-carousel span {
+  font-weight: 600;
+  color: #101527;
 }
 
+/* Mobile tuning */
+@media (max-width: 768px) {
+  .values-carousel blockquote {
+    min-width: 240px;
+    height: 240px;
+    padding: 1.5rem;
+  }
+}
 
 
 /* =========================
