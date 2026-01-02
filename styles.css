@@ -209,6 +209,31 @@ body {
 }
 
 
+/* Logo wrapper */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Logo image */
+.logo img {
+  height: 48px;              /* ideal navbar size */
+  width: auto;
+  object-fit: contain;
+}
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .logo img {
+    height: 40px;
+  }
+}
+
+
 /* ========== ABOUT SECTION ========== */
 /* Container styling */
 /* Container styling */
@@ -512,6 +537,11 @@ body {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
 }
 
 .team-card:hover {
@@ -521,13 +551,15 @@ body {
 
 /* Team Photo */
 .team-photo {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 0; /* Square */
-  margin-bottom: 1.5rem;
-  border: 3px solid #101527; /* Primary color border */
+  width: 100%;
+  height: 280px;               /* controlled height */
+  object-fit: contain;         /* 🔑 prevents cropping */
+  object-position: center top; /* prioritizes head */
+  background-color: #f5f5f5;   /* neutral fallback */
+  border-radius: 8px;          /* square but refined */
+  padding-top: 0.5rem;         /* breathing space */
 }
+
 
 /* Team Name */
 .team-card h3 {
