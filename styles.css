@@ -368,7 +368,7 @@ section h2 {
 /* Icon Styling */
 .service-icon {
   font-size: 2.5rem;
-  color: #0077b6;
+  color: #101527;
   margin-bottom: 1rem;
 }
 
@@ -390,85 +390,64 @@ section h2 {
 /* =========================
    VALUES CAROUSEL
 ========================= */
-.values-carousel-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
+.values-section {
+  padding: 4rem 2rem;
+  background: #f5f8fa;
 }
 
-.values-carousel {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 1rem 0;
-}
-
-.values-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-/* SQUARE CARDS */
-.value-card {
-  min-width: 220px;
-  aspect-ratio: 1 / 1;
-  background-color: var(--white);
-  border: 1px solid var(--border-light);
-  border-radius: 12px;
-  padding: 1.5rem;
+.section-title {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: all 0.3s ease;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #101527;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.value-card {
+  background: #fff; /* white box background */
+  border-radius: 12px; /* rounded corners */
+  padding: 2rem;
+  text-align: center;
+  color: #333; /* text color */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* soft shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .value-card i {
-  font-size: 1.8rem;
-  color: var(--gold);
-  margin-bottom: 0.75rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .value-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   margin-bottom: 0.5rem;
 }
 
 .value-card p {
-  font-size: 0.95rem;
-  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-.value-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06);
-}
-
-/* =========================
-   CAROUSEL BUTTONS
-========================= */
-.carousel-btn {
-  background-color: var(--white);
-  border: 1px solid var(--gold);
-  color: var(--navy);
-  font-size: 1.5rem;
-  padding: 0.5rem 0.9rem;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.carousel-btn:hover {
-  background-color: var(--gold);
-}
-
-.prev-btn {
-  margin-right: 0.5rem;
-}
-
-.next-btn {
-  margin-left: 0.5rem;
-}
 
 /* =========================
    SCROLL ANIMATIONS
