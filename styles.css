@@ -50,110 +50,104 @@ body {
 /* =========================
    HERO SECTION
 ========================= */
-.hero {
-  background-color: var(--white);
-  padding: 6rem 0;
-}
-
-.hero-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.hero-subtitle {
-  max-width: 720px;
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-/* =========================
-   CTA BUTTONS
-========================= */
-.hero-cta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.cta-btn {
-  padding: 0.85rem 1.75rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 6px;
-  border: 2px solid var(--gold);
-  background-color: var(--gold);
-  color: var(--navy);
-  transition: all 0.3s ease;
-}
-
-.cta-btn:hover {
-  background-color: transparent;
-  color: var(--navy);
-}
-
-.secondary-btn {
-  background-color: transparent;
-  color: var(--navy);
-}
-
-.secondary-btn:hover {
-  background-color: var(--gold);
-}
-
-/* ===================== NAVBAR ===================== */
+/* ========== NAVBAR ========== */
+/* ========== NAVBAR ========== */
 .navbar {
-  position: sticky;      /* makes it stick to the top */
+  position: sticky;
   top: 0;
   width: 100%;
-  background-color: #fff; /* or your preferred color */
-  z-index: 999;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background-color: #101527; /* Primary brand color */
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #222;
+/* Logo */
+.navbar .logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffc107; /* Accent color */
   text-decoration: none;
 }
 
-nav {
-  display: flex;
-}
-
-.nav-links {
-  display: flex;
+/* Nav links */
+.navbar nav ul {
   list-style: none;
-  gap: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
-.nav-links li a {
+.navbar nav ul li a {
+  color: #fff;
   text-decoration: none;
-  color: #222;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
-  color: #007bff;
+.navbar nav ul li a:hover {
+  color: #ffc107; /* Accent hover */
 }
+
+/* Hamburger menu for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #ffc107;
+  border-radius: 2px;
+}
+
+/* Mobile Menu */
+@media (max-width: 992px) {
+  .navbar nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #101527;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+  }
+
+  .navbar nav.open {
+    max-height: 500px; /* enough to show all links */
+  }
+
+  .navbar nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+
 
 /* Hamburger Menu */
 .hamburger {
@@ -218,9 +212,10 @@ nav {
 
 /* ========== ABOUT SECTION ========== */
 /* Container styling */
+/* Container styling */
 .about-intro {
-  padding: 4rem 2rem; /* adjust top/bottom spacing */
-  background: #fff;   /* clean white background */
+  padding: 4rem 2rem; /* top/bottom spacing */
+  background: #fff;   /* clean background */
 }
 
 /* Headline */
@@ -228,18 +223,18 @@ nav {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #222;
+  color: #101527; /* primary brand color */
   text-align: center;
 }
 
 /* Continuous paragraph */
 .tagline {
   font-size: 1.2rem;
-  color: #555;
+  color: #333; /* darker gray for readability */
   font-weight: 500;
   line-height: 1.8;
   max-width: 900px;
-  margin: 0 auto 2.5rem auto; /* centered and reduced spacing */
+  margin: 0 auto 2.5rem auto; /* centered */
   text-align: center;
 }
 
@@ -248,7 +243,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   flex-wrap: wrap; /* mobile-friendly */
   max-width: 900px;
   margin: 0 auto;
@@ -258,16 +253,16 @@ nav {
 .mission-card, .vision-card {
   flex: 1 1 300px; /* responsive width */
   padding: 1.5rem 2rem;
-  background: #f9f9f9; /* subtle highlight */
+  background: #101527; /* primary brand color */
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  color: #fff; /* text in white */
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .mission-card:hover, .vision-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* Card headings */
@@ -275,15 +270,16 @@ nav {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #222;
+  color: #ffc107; /* accent color */
 }
 
 /* Card text */
 .mission-card p, .vision-card p {
   font-size: 1rem;
   line-height: 1.6;
-  color: #555;
+  color: #f0f0f0; /* light text for readability */
 }
+
 
 /* Responsive: side by side on medium+ screens */
 @media (min-width: 768px) {
@@ -312,141 +308,140 @@ nav {
 /* =========================
    SECTIONS
 ========================= */
-section {
-  background-color: var(--white);
-  padding: 5rem 0;
+#services {
+  padding: 4rem 2rem;
+  background-color: #f9fafb; /* light neutral background */
+  text-align: center;
 }
 
-section h2 {
-  font-size: 2rem;
-  text-align: center;
+#services h2 {
+  font-size: 2.5rem;
+  color: #101527; /* Primary brand color */
   margin-bottom: 3rem;
 }
 
-/* Section styling */
-#services {
-  padding: 4rem 2rem;
-  background: #fff;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: #555;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 3rem auto;
-}
-
-/* Services Grid */
+/* Fixed 2x3 grid */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-rows: repeat(2, auto);  /* 2 rows */
   gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Service Card */
+/* Service Cards */
 .service-card {
-  background: #f9f9f9;
-  padding: 2rem 1.5rem;
+  background-color: #101527; /* Primary brand color */
+  color: #fff;
   border-radius: 12px;
-  text-align: center;
+  padding: 2rem 1.5rem;
+  text-align: left;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* Icon Styling */
-.service-icon {
-  font-size: 2.5rem;
-  color: #101527;
+/* Icons */
+.service-card i {
+  font-size: 2rem;
+  color: #ffc107; /* Accent color */
   margin-bottom: 1rem;
+  display: inline-block;
 }
 
-/* Card Titles */
+/* Titles */
 .service-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.8rem;
-  color: #222;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #fff;
 }
 
-/* Card Descriptions */
-.service-card p {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
+/* Lists */
+.service-card ul {
+  list-style: disc inside;
+  margin-left: 0;
+  padding-left: 0;
 }
+
+.service-card li {
+  margin-bottom: 0.5rem;
+  color: #f0f0f0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+
 
 
 /* =========================
    VALUES 
 ========================= */
+/* Values Section */
+/* Values Section */
 .values-section {
   padding: 4rem 2rem;
-  background: #f5f8fa;
+  background-color: #f9fafb; /* Light neutral background */
+  text-align: center;
 }
 
-.section-title {
-  text-align: center;
+.values-section h2 {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #101527;
-}
-
-.section-subtitle {
-  text-align: center;
-  font-size: 1.1rem;
-  color: #555;
+  color: #101527; /* Primary brand color */
   margin-bottom: 3rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
+/* Values Grid */
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Value Cards */
 .value-card {
-  background: #fff; /* white box background */
-  border-radius: 12px; /* rounded corners */
-  padding: 2rem;
+  background-color: #101527; /* Primary brand color */
+  color: #fff;
+  border-radius: 12px;
+  padding: 2rem 1rem;
   text-align: center;
-  color: #333; /* text color */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* soft shadow for depth */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .value-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
+/* Icons */
 .value-card i {
   font-size: 2.5rem;
+  color: #ffc107; /* Accent color */
   margin-bottom: 1rem;
 }
 
+/* Titles */
 .value-card h3 {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  color: #fff;
 }
 
+/* Paragraphs */
 .value-card p {
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #f0f0f0;
 }
+
+
 
 /* =========================
    TEAM
@@ -460,7 +455,7 @@ section h2 {
 
 .team-section h2 {
   font-size: 2.5rem;
-  color: #0a3d62; /* Primary brand color */
+  color: #101527; /* Primary brand color */
   margin-bottom: 3rem;
 }
 
@@ -495,13 +490,13 @@ section h2 {
   object-fit: cover;
   border-radius: 0; /* Square */
   margin-bottom: 1.5rem;
-  border: 3px solid #0a3d62; /* Primary color border */
+  border: 3px solid #101527; /* Primary color border */
 }
 
 /* Team Name */
 .team-card h3 {
   font-size: 1.5rem;
-  color: #0a3d62; /* Primary brand color */
+  color: #101527; /* Primary brand color */
   margin-bottom: 0.5rem;
 }
 
@@ -514,7 +509,7 @@ section h2 {
 
 /* Contact */
 .team-card .contact a {
-  color: #0a3d62; /* Primary color for links */
+  color: #101527; /* Primary color for links */
   text-decoration: none;
 }
 
@@ -538,7 +533,7 @@ section h2 {
 
 .team-card .achievements li {
   margin-bottom: 0.5rem;
-  color: #0a3d62; /* Primary color bullets */
+  color: #101527; /* Primary color bullets */
   list-style-type: disc;
   margin-left: 1.2rem;
 }
@@ -555,7 +550,7 @@ section h2 {
 
 /* Carousel buttons */
 .carousel-btn {
-  background: #0a3d62; /* brand color */
+  background: #101527; /* brand color */
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -592,7 +587,7 @@ section h2 {
 
 .testimonial-carousel blockquote {
   flex: 0 0 300px;
-  background: #0a3d62;
+  background: #101527;
   color: #fff;
   border-radius: 12px;
   padding: 2rem;
@@ -628,12 +623,12 @@ section h2 {
 }
 
 .carousel-dots span.active {
-  background: #0a3d62; /* active dot uses brand color */
+  background: #101527; /* active dot uses brand color */
 }
 
 /* Footer Base */
 .footer {
-  background-color: #0a3d62; /* Primary brand color */
+  background-color: #101527; /* Primary brand color */
   color: #f9fafb; /* Light text */
   padding: 4rem 2rem 2rem 2rem;
   font-family: 'Inter', sans-serif;
