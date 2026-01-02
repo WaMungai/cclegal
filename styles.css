@@ -209,23 +209,33 @@ body {
 }
 
 
-/* Logo wrapper */
+
+/* Logo Styling */
+/* Navbar Container */
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;      /* fixed navbar height */
+  padding: 0 2rem;   /* horizontal padding only */
+}
+
+/* Logo Styling */
 .logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-size: 1.3rem; /* slightly bigger text */
+  font-weight: 700;
+  color: #ffc107;
 }
 
-/* Logo image */
 .logo img {
-  height: 48px;              /* ideal navbar size */
+  height: 48px;       /* fits within navbar height */
   width: auto;
   object-fit: contain;
-}
-.navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 @media (max-width: 768px) {
   .logo img {
