@@ -7,6 +7,7 @@ hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
 });
 
+
 // ===================== SCROLL-IN ANIMATION =====================
 const scrollElements = document.querySelectorAll(".scroll-in");
 
