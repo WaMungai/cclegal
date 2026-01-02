@@ -76,4 +76,17 @@ function initCarousel(wrapperSelector) {
 initCarousel('#testimonials');
 initCarousel('#values');
 
+document.querySelectorAll('.toggle-achievements').forEach(button => {
+  button.addEventListener('click', () => {
+    const achievements = button.nextElementSibling;
+
+    const isOpen = achievements.style.display === 'block';
+
+    achievements.style.display = isOpen ? 'none' : 'block';
+    button.textContent = isOpen
+      ? 'View Notable Achievements'
+      : 'Hide Notable Achievements';
+  });
+});
+
 

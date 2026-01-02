@@ -574,6 +574,39 @@ body {
   margin-left: 1.2rem;
 }
 
+/* Toggle button */
+.toggle-achievements {
+  margin-top: 1rem;
+  background: transparent;
+  border: 2px solid #D4AF37;
+  color: #D4AF37;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-achievements:hover {
+  background: #D4AF37;
+  color: #101527;
+}
+
+/* Achievements list */
+.achievements {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+  display: none;
+  text-align: left;
+}
+
+.achievements li {
+  margin-bottom: 0.5rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+
 
 /* Testimonials Section */
 /* Carousel wrapper */
