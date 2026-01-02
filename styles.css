@@ -481,6 +481,94 @@ section h2 {
   flex-shrink: 0;
 }
 
+/* Testimonials Section */
+/* Carousel wrapper */
+.testimonial-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Carousel buttons */
+.carousel-btn {
+  background: #0a3d62; /* brand color */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: #064273;
+}
+
+.prev-btn {
+  left: -20px;
+}
+
+.next-btn {
+  right: -20px;
+}
+
+/* Testimonials */
+.testimonial-carousel {
+  display: flex;
+  overflow: hidden;
+  gap: 2rem;
+  scroll-behavior: smooth;
+}
+
+.testimonial-carousel blockquote {
+  flex: 0 0 300px;
+  background: #0a3d62;
+  color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Author name */
+.testimonial-carousel blockquote span {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+/* Optional dots navigation */
+.carousel-dots {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.carousel-dots span {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel-dots span.active {
+  background: #0a3d62; /* active dot uses brand color */
+}
+
+
 
 
 

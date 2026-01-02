@@ -32,33 +32,44 @@ window.addEventListener("scroll", handleScrollAnimation);
 handleScrollAnimation();
 
 // ===================== TESTIMONIAL CAROUSEL =====================
-const testimonialCarousel = document.getElementById("testimonial-carousel");
-if (testimonialCarousel) {
-  let testimonialIndex = 0;
-  const testimonials = testimonialCarousel.querySelectorAll("blockquote");
+const carousel = document.querySelector('.testimonial-carousel');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const dotsContainer = document.querySelector('.carousel-dots');
+const testimonials = carousel.querySelectorAll('blockquote');
 
-  const showTestimonial = (index) => {
-    testimonials.forEach((block, i) => {
-      block.style.display = i === index ? "block" : "none";
-    });
-  };
+let currentIndex = 0;
 
-  const nextTestimonial = () => {
-    testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-    showTestimonial(testimonialIndex);
-  };
+// Create dots
+testimonials.forEach((_, i) => {
+  const dot = document.createElement('span');
+  if(i === 0) dot.classList.add('active');
+  dotsContainer.appendChild(dot);
+  dot.addEventListener('click', () => {
+    currentIndex = i;
+    updateCarousel();
+  });
+});
 
-  const prevTestimonial = () => {
-    testimonialIndex = (testimonialIndex - 1 + testimonials.length) % testimonials.length;
-    showTestimonial(testimonialIndex);
-  };
+const dots = dotsContainer.querySelectorAll('span');
 
-  // Auto rotate every 6 seconds
-  setInterval(nextTestimonial, 6000);
-
-  // Initialize
-  showTestimonial(testimonialIndex);
+function updateCarousel() {
+  const scrollWidth = testimonials[0].offsetWidth + 32; // width + gap
+  carousel.scrollTo({ left: scrollWidth * currentIndex, behavior: 'smooth' });
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[currentIndex].classList.add('active');
 }
+
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex > 0) ? currentIndex - 1 : testimonials.length - 1;
+  updateCarousel();
+});
+
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % testimonials.length;
+  updateCarousel();
+});
+
 
 // ===================== VALUES CAROUSEL =====================
 const valuesWrapper = document.querySelector(".values-carousel-wrapper");
