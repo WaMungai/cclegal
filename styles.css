@@ -451,35 +451,98 @@ section h2 {
 /* =========================
    TEAM
 ========================= */
+/* Team Section */
+.team-section {
+  background-color: #f9fafb; /* Light background to contrast brand colors */
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2.5rem;
+  color: #0a3d62; /* Primary brand color */
+  margin-bottom: 3rem;
+}
+
+/* Team Grid */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem; /* space between cards */
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Team Card */
 .team-card {
-  background: #fff;
+  background-color: #ffffff;
   border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  padding: 2rem 1.5rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Team Photo */
 .team-photo {
   width: 150px;
   height: 150px;
-  border-radius: 8px;  /* square corners */
-  object-fit: contain;  /* show full head */
-  margin-bottom: 1rem;
-  background: #f0f0f0;
-  padding: 4px;
-  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 0; /* Square */
+  margin-bottom: 1.5rem;
+  border: 3px solid #0a3d62; /* Primary color border */
 }
+
+/* Team Name */
+.team-card h3 {
+  font-size: 1.5rem;
+  color: #0a3d62; /* Primary brand color */
+  margin-bottom: 0.5rem;
+}
+
+/* Role */
+.team-card .role {
+  font-size: 1rem;
+  color: #ffc107; /* Accent color */
+  margin-bottom: 1rem;
+}
+
+/* Contact */
+.team-card .contact a {
+  color: #0a3d62; /* Primary color for links */
+  text-decoration: none;
+}
+
+.team-card .contact a:hover {
+  color: #ffc107; /* Highlight on hover */
+}
+
+/* Bio / Achievements */
+.team-card .bio {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.team-card .achievements {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.team-card .achievements li {
+  margin-bottom: 0.5rem;
+  color: #0a3d62; /* Primary color bullets */
+  list-style-type: disc;
+  margin-left: 1.2rem;
+}
+
 
 /* Testimonials Section */
 /* Carousel wrapper */
