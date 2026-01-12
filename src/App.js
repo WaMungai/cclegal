@@ -8,6 +8,7 @@ import { PracticeAreas } from './components/PracticeAreas';
 import Partners from './components/Partners';
 import TeamMembers from './components/TeamMembers';
 import ClientShowcase from './components/ClientShowcase';
+import BlogSection from './components/BlogSection';
 
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
     <Partners />
     <TeamMembers />
     <ClientShowcase />
+    <BlogSection />
     
   </>
 );
