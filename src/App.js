@@ -7,6 +7,7 @@ import { Differentiation } from './components/Differentiation';
 import { PracticeAreas } from './components/PracticeAreas';
 import Partners from './components/Partners';
 import TeamMembers from './components/TeamMembers';
+import ClientShowcase from './components/ClientShowcase';
 
 
 const App = () => (
@@ -16,9 +17,9 @@ const App = () => (
     <AboutUs />
     <Differentiation />
     <PracticeAreas />
-  
     <Partners />
     <TeamMembers />
+    <ClientShowcase />
     
   </>
 );
