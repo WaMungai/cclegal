@@ -63,7 +63,7 @@ function PartnerCard({ partner }) {
 
 export default function Partners() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <section id="team" className="max-w-7xl mx-auto px-6 py-20">
       <h2 className="text-3xl font-semibold mb-10">Partners</h2>
       <div className="grid md:grid-cols-2 gap-10">
         {partners.map((p, i) => <PartnerCard key={i} partner={p} />)}

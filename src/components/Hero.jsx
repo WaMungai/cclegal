@@ -6,6 +6,7 @@ import heroimage from "../assets/heroimage.png";
 export const Hero = () => {
   return (
     <header
+      id="home"
       className="relative bg-[#101527] text-white px-6 md:px-20 py-36 md:py-48 flex items-center"
       style={{
         backgroundImage: `url(${heroimage})`,

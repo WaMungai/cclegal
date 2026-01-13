@@ -103,7 +103,7 @@ export const PracticeAreas = () => {
   const [selectedService, setSelectedService] = useState(null);
 
   return (
-    <section id="services" className="px-6 md:px-20 py-20 bg-gray-50">
+    <section id="practiceareas" className="px-6 md:px-20 py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl font-bold text-[#101527]">Practice Areas</h2>
         <p className="mt-4 text-gray-700 text-lg md:text-xl">

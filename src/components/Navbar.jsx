@@ -7,14 +7,15 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
 
-  const links = [
-    //{ name: "About Us", href: "#about" },
-    { name: "Practice Areas", href: "#services" },
-    { name: "Team", href: "#team" },
-    { name: "Blog", href: "#blog" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact Us", href: "#contact" },
-  ];
+ const links = [
+  { name: "Home", href: "#home" },
+  { name: "Practice Areas", href: "#practiceareas" },
+  { name: "Why Us", href: "#whyus" },
+  { name: "Team", href: "#team" },
+  { name: "Blog", href: "#blog" },
+  { name: "Testimonials", href: "#testimonials" },
+  { name: "Contact Us", href: "#contact" },
+];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +29,7 @@ export const Navbar = () => {
     <>
       <nav className="fixed top-0 w-full bg-[#101527] text-white z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-6 md:px-20 flex justify-between items-center h-16">
-          <div className="text-2xl font-bold text-[#D4AF37] z-50">Chege & Chege Advocates</div>
+          <a className="text-2xl font-bold text-[#D4AF37] z-50">Chege & Chege Advocates</a>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-8">
