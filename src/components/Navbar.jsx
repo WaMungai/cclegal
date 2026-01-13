@@ -1,51 +1,59 @@
 // src/components/Navbar.jsx
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
 
- const links = [
-  { name: "Home", href: "#home" },
-  { name: "Practice Areas", href: "#practiceareas" },
-  { name: "Why Us", href: "#whyus" },
-  { name: "Team", href: "#team" },
-  { name: "Blog", href: "#blog" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "Contact Us", href: "#contact" },
-];
+  const links = [
+    { name: "Home", href: "/" },
+    { name: "Practice Areas", href: "#practiceareas" },
+    { name: "Why Us", href: "#whyus" },
+    { name: "Team", href: "/team" },
+    { name: "Blog", href: "/blog" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact Us", href: "#contact" },
+  ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowStickyCTA(window.scrollY > 300);
-    };
+    const handleScroll = () => setShowStickyCTA(window.scrollY > 300);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Decide whether to render a Router Link or a plain anchor
+  const renderLink = (link, onClick = () => {}) =>
+    link.href.startsWith("/") ? (
+      <Link to={link.href} className="hover:text-[#D4AF37] transition font-medium" onClick={onClick}>
+        {link.name}
+      </Link>
+    ) : (
+      <a href={link.href} className="hover:text-[#D4AF37] transition font-medium" onClick={onClick}>
+        {link.name}
+      </a>
+    );
 
   return (
     <>
       <nav className="fixed top-0 w-full bg-[#101527] text-white z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-6 md:px-20 flex justify-between items-center h-16">
-          <a className="text-2xl font-bold text-[#D4AF37] z-50">Chege & Chege Advocates</a>
+          <Link to="/" className="text-2xl font-bold text-[#D4AF37] z-50">
+            Chege & Chege Advocates
+          </Link>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-8">
             {links.map((link) => (
-              <li key={link.name}>
-                <a href={link.href} className="hover:text-[#D4AF37] transition font-medium">
-                  {link.name}
-                </a>
-              </li>
+              <li key={link.name}>{renderLink(link)}</li>
             ))}
           </ul>
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
             <a
-              href="#consultation"
+              href="#contact"
               className="bg-[#D4AF37] text-[#101527] px-6 py-2 rounded font-semibold shadow hover:bg-[#c29d2f] transition"
             >
               Book Consultation
@@ -75,19 +83,11 @@ export const Navbar = () => {
         >
           <ul className="flex flex-col px-6 py-4 space-y-4">
             {links.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="block text-white hover:text-[#D4AF37] font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </a>
-              </li>
+              <li key={link.name}>{renderLink(link, () => setIsOpen(false))}</li>
             ))}
             <li>
               <a
-                href="#consultation"
+                href="#contact"
                 className="block mt-2 bg-[#D4AF37] text-[#101527] px-6 py-2 rounded font-semibold shadow hover:bg-[#c29d2f] transition text-center"
               >
                 Book Consultation
@@ -106,7 +106,7 @@ export const Navbar = () => {
           className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
         >
           <a
-            href="#consultation"
+            href="#contact"
             className="bg-[#D4AF37] text-[#101527] px-6 py-3 rounded font-semibold shadow-lg"
           >
             Book Consultation
@@ -116,6 +116,3 @@ export const Navbar = () => {
     </>
   );
 };
-
-
-

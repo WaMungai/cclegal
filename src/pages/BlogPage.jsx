@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { sanityClient, urlFor } from "./sanityClient";
+import { sanityClient, urlFor } from "../components/Blog/sanityClient";
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
