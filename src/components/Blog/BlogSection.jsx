@@ -1,85 +1,72 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { sanityClient } from "./sanityClient";
+import React, { useEffect, useState } from 'react'
+import { client } from './sanityClient'
+import { PortableText } from '@portabletext/react'
 
-export function BlogSection() {
-  const [posts, setPosts] = useState([]);
+export default function BlogSection() {
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    sanityClient
-      .fetch(`
-        *[_type == "post"] | order(publishedAt desc)[0...4] {
-          _id,
+    const fetchPosts = async () => {
+      const query = `
+        *[_type == "post"]{
           title,
-          "slug": slug.current,
-          excerpt,
-          category->{
-            title
-          }
-        }
-      `)
-      .then(setPosts)
-      .catch(console.error);
-  }, []);
+          slug,
+          publishedAt,
+          "author": author->{
+            name,
+            image
+          },
+          "categories": categories[]->{
+            title,
+            slug
+          },
+          body
+        } | order(publishedAt desc)
+      `
+      const data = await client.fetch(query)
+      setPosts(data)
+    }
+
+    fetchPosts()
+  }, [])
+
+  if (!posts.length) return <p>Loading blog posts...</p>
 
   return (
-    <section id="blog" className="bg-gray-50 py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-          <div>
-            <h2 className="text-3xl font-semibold text-[#101527]">
-              Legal Insights & Updates
-            </h2>
-            <p className="mt-3 text-gray-600 max-w-2xl">
-              Practical legal commentary, regulatory updates, and insights
-              aligned with the challenges our clients face.
-            </p>
-          </div>
+    <section>
+      <h1>Our Blog</h1>
+      {posts.map(post => (
+        <article key={post.slug.current} style={{ borderBottom: '1px solid #ccc', padding: '2rem 0' }}>
+          <h2>{post.title}</h2>
 
-          <Link
-            to="/blog"
-            className="mt-6 md:mt-0 inline-block font-semibold text-[#D4AF37] hover:underline"
-          >
-            View All Insights →
-          </Link>
-        </div>
-
-        {/* Blog Cards */}
-        <div className="grid gap-8 md:grid-cols-3">
-          {posts.map((post) => (
-            <article
-              key={post._id}
-              className="bg-white border rounded-xl p-6 hover:shadow-lg transition"
-            >
-              {/* Category */}
-              {post.category?.title && (
-                <span className="text-xs uppercase tracking-wide text-[#D4AF37] font-semibold">
-                  {post.category.title}
-                </span>
+          {/* Author */}
+          {post.author && (
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
+              {post.author.image && (
+                <img
+                  src={post.author.image.asset.url}
+                  alt={post.author.name}
+                  style={{ width: 40, height: 40, borderRadius: '50%', marginRight: '0.5rem' }}
+                />
               )}
+              <span>By {post.author.name}</span>
+            </div>
+          )}
 
-              {/* Title */}
-              <h3 className="mt-3 text-lg font-semibold text-[#101527] leading-snug">
-                {post.title}
-              </h3>
+          {/* Categories */}
+          {post.categories?.length > 0 && (
+            <p>
+              Categories: {post.categories.map(cat => cat.title).join(', ')}
+            </p>
+          )}
 
-              {/* Excerpt */}
-              <p className="mt-3 text-sm text-gray-600 line-clamp-3">
-                {post.excerpt}
-              </p>
+          {/* Published Date */}
+          <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
 
-              {/* CTA */}
-              <Link
-                to={`/blog/${post.slug}`}
-                className="inline-block mt-5 font-semibold text-[#101527] hover:text-[#D4AF37]"
-              >
-                Read More →
-              </Link>
-            </article>
-          ))}
-        </div>
-      </div>
+          {/* Post Body */}
+          <PortableText value={post.body} />
+        </article>
+      ))}
     </section>
-  );
+  )
 }

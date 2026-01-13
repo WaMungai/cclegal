@@ -13,10 +13,13 @@ import ClientShowcase from "./components/ClientShowcase";
 import ContactForm from "./components/ContactForm";
 
 /* Blog pages */
-import BlogPage from "./pages/BlogPage";
-import BlogPost from "./components/Blog/BlogPost";
-import { BlogSection } from "./components/Blog/BlogSection";
+//import BlogPage from "./pages/BlogPage";
+
+
 import TeamPage from "./pages/TeamPage";
+import BlogSection from "./components/Blog/BlogSection";
+//import BlogPost from "./components/Blog/BlogPost";
+
 
 const HomePage = ({ posts }) => (
   <>
@@ -40,10 +43,7 @@ const HomePage = ({ posts }) => (
       <ClientShowcase />
     </section>
 
-    {/* Blog preview */}
-    <section id="blog" className="pt-16">
-      <BlogSection posts={posts} previewOnly={true} />
-    </section>
+  
 
     {/* Contact Form */}
     <section id="contact" className="pt-16">
@@ -72,11 +72,16 @@ export default function App({ posts }) {
             }
           />
 
-          {/* Blog page */}
-          <Route path="/blog" element={<BlogPage posts={posts} />} />
+          <Route
+            path="/blog"
+            element={
+              <div className="pt-16 max-w-7xl mx-auto px-6">
+               <BlogSection />
+              </div>
+            }
+          />
 
-          {/* Individual blog posts */}
-          <Route path="/blog/:slug" element={<BlogPost />} />
+       
         </Routes>
       </div>
     </Router>
