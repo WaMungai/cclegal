@@ -18,7 +18,10 @@ import ContactForm from "./components/ContactForm";
 
 import TeamPage from "./pages/TeamPage";
 import BlogSection from "./components/Blog/BlogSection";
-//import BlogPost from "./components/Blog/BlogPost";
+import FeaturedBlogs from "./components/Blog/FeaturedBlogs";
+import BlogPage from "./components/Blog/BlogPage";
+import PostPage from "./components/Blog/PostPage";
+
 
 
 const HomePage = ({ posts }) => (
@@ -43,7 +46,11 @@ const HomePage = ({ posts }) => (
       <ClientShowcase />
     </section>
 
-  
+    <section id="testimonials" className="pt-16">
+      <FeaturedBlogs />
+    </section>
+
+
 
     {/* Contact Form */}
     <section id="contact" className="pt-16">
@@ -67,7 +74,7 @@ export default function App({ posts }) {
             path="/team"
             element={
               <div className="pt-16 max-w-7xl mx-auto px-6">
-               <TeamPage />
+                <TeamPage />
               </div>
             }
           />
@@ -76,12 +83,15 @@ export default function App({ posts }) {
             path="/blog"
             element={
               <div className="pt-16 max-w-7xl mx-auto px-6">
-               <BlogSection />
+                <BlogSection />
               </div>
             }
           />
 
-       
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<PostPage />} />
+
+
         </Routes>
       </div>
     </Router>

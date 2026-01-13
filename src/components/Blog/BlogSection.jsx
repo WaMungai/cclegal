@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { client } from './sanityClient'
+import { client, urlFor } from './sanityClient'
 import { PortableText } from '@portabletext/react'
 
 export default function BlogSection() {
@@ -17,8 +17,7 @@ export default function BlogSection() {
             image
           },
           "categories": categories[]->{
-            title,
-            slug
+            title
           },
           body
         } | order(publishedAt desc)
@@ -33,40 +32,62 @@ export default function BlogSection() {
   if (!posts.length) return <p>Loading blog posts...</p>
 
   return (
-    <section>
-      <h1>Our Blog</h1>
-      {posts.map(post => (
-        <article key={post.slug.current} style={{ borderBottom: '1px solid #ccc', padding: '2rem 0' }}>
-          <h2>{post.title}</h2>
+    <section style={{ padding: '4rem 2rem', background: '#f9f9f9' }}>
+      <h1 style={{ textAlign: 'center', marginBottom: '3rem' }}>Our Blog</h1>
 
-          {/* Author */}
-          {post.author && (
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
-              {post.author.image && (
-                <img
-                  src={post.author.image.asset.url}
-                  alt={post.author.name}
-                  style={{ width: 40, height: 40, borderRadius: '50%', marginRight: '0.5rem' }}
-                />
-              )}
-              <span>By {post.author.name}</span>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: '2rem'
+      }}>
+        {posts.map(post => (
+          <div
+            key={post.slug.current}
+            style={{
+              background: '#fff',
+              borderRadius: '12px',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+              overflow: 'hidden',
+              transition: 'transform 0.2s, box-shadow 0.2s',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-5px)'
+              e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)'
+            }}
+          >
+            {/* Author Image */}
+            {post.author?.image && (
+              <img
+                src={urlFor(post.author.image).width(600).height(300).url()}
+                alt={post.author.name}
+                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+              />
+            )}
+
+            <div style={{ padding: '1rem 1.5rem' }}>
+              <h2 style={{ margin: '0 0 0.5rem 0' }}>{post.title}</h2>
+
+              {/* Author & Categories */}
+              <p style={{ fontSize: '0.9rem', color: '#555', marginBottom: '0.5rem' }}>
+                By <strong>{post.author?.name}</strong> | Categories: {post.categories?.map(c => c.title).join(', ')}
+              </p>
+
+              {/* Published Date */}
+              <p style={{ fontSize: '0.8rem', color: '#888', marginBottom: '1rem' }}>
+                Published: {new Date(post.publishedAt).toLocaleDateString()}
+              </p>
+
+              {/* Post Excerpt */}
+              <PortableText value={post.body.slice(0, 200)} /> {/* optional snippet */}
             </div>
-          )}
-
-          {/* Categories */}
-          {post.categories?.length > 0 && (
-            <p>
-              Categories: {post.categories.map(cat => cat.title).join(', ')}
-            </p>
-          )}
-
-          {/* Published Date */}
-          <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
-
-          {/* Post Body */}
-          <PortableText value={post.body} />
-        </article>
-      ))}
+          </div>
+        ))}
+      </div>
     </section>
   )
 }
