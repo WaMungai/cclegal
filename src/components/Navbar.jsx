@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Logo from '../assets/cclogo.jpeg';
+
+// Scroll helper
+const scrollToSection = (sectionId) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const links = [
     { name: "Home", href: "/" },
@@ -23,24 +34,35 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const renderLink = (link, onClick = () => { }) =>
-    link.href.startsWith("/") ? (
+  const handleSectionClick = (sectionId) => {
+    if (location.pathname !== "/") {
+      // Navigate home first with scroll state
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      scrollToSection(sectionId);
+    }
+    setIsOpen(false); // Close mobile menu if open
+  };
+
+  const renderLink = (link) => {
+    const isSectionLink = link.href.startsWith("#");
+    return isSectionLink ? (
+      <button
+        onClick={() => handleSectionClick(link.href.substring(1))}
+        className="hover:text-[#D4AF37] transition font-medium whitespace-nowrap"
+      >
+        {link.name}
+      </button>
+    ) : (
       <Link
         to={link.href}
-        onClick={onClick}
         className="hover:text-[#D4AF37] transition font-medium whitespace-nowrap"
+        onClick={() => setIsOpen(false)}
       >
         {link.name}
       </Link>
-    ) : (
-      <a
-        href={link.href}
-        onClick={onClick}
-        className="hover:text-[#D4AF37] transition font-medium whitespace-nowrap"
-      >
-        {link.name}
-      </a>
     );
+  };
 
   return (
     <>
@@ -49,8 +71,8 @@ const Navbar = () => {
 
           {/* LEFT: LOGO */}
           <div className="flex-shrink-0">
-            <img src={Logo} alt="Chege & Chege Advocates"   className="h-14 md:h-20 object-contain " />
 
+            <img src={Logo} alt="Chege & Chege Advocates" className="h-10 md:h-12 object-contain" />
           </div>
 
           {/* CENTER: LINKS */}
@@ -102,9 +124,7 @@ const Navbar = () => {
         >
           <ul className="flex flex-col px-8 py-6 space-y-5 text-base">
             {links.map((link) => (
-              <li key={link.name}>
-                {renderLink(link, () => setIsOpen(false))}
-              </li>
+              <li key={link.name}>{renderLink(link)}</li>
             ))}
             <li>
               <a
