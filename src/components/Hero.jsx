@@ -33,7 +33,7 @@ export const Hero = () => {
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
           <a
-            href="#consultation"
+            href="#contact"
             className="bg-[#D4AF37] text-[#101527] px-6 py-3 rounded font-semibold shadow hover:bg-[#c29d2f] transition"
           >
             Book a Consultation

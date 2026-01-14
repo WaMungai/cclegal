@@ -10,7 +10,7 @@ import { AboutUs } from "./components/Aboutus";
 import { Differentiation } from "./components/Differentiation";
 import { PracticeAreas } from "./components/PracticeAreas";
 import ClientShowcase from "./components/ClientShowcase";
-import ContactForm from "./components/ContactForm";
+import ContactForm from "./components/BookConsultation";
 
 /* Blog pages */
 //import BlogPage from "./pages/BlogPage";
@@ -21,6 +21,8 @@ import BlogSection from "./components/Blog/BlogSection";
 import FeaturedBlogs from "./components/Blog/FeaturedBlogs";
 import BlogPage from "./components/Blog/BlogPage";
 import PostPage from "./components/Blog/PostPage";
+import Footer from "./components/Footer";
+import BookConsultation from "./components/BookConsultation";
 
 
 
@@ -54,7 +56,11 @@ const HomePage = ({ posts }) => (
 
     {/* Contact Form */}
     <section id="contact" className="pt-16">
-      <ContactForm />
+      <BookConsultation />
+    </section>
+
+    <section id="contact" className="pt-16">
+      <Footer />
     </section>
   </>
 );
