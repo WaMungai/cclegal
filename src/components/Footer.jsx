@@ -3,24 +3,23 @@ import { FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 export default function Footer() {
-    const offices = [
-        {
-            city: 'Nairobi, Kenya',
-            address: '123 Legal St, Nairobi',
-            phone: '+254 700 000 000'
-        },
-        {
-            city: 'Mombasa, Kenya',
-            address: '456 Coast Rd, Mombasa',
-            phone: '+254 701 111 111'
-        },
-        {
-            city: 'Kisumu, Kenya',
-            address: '789 Lakeview Ave, Kisumu',
-            phone: '+254 702 222 222'
-        }
-    ]
-
+   const offices = [
+  {
+    city: 'Nairobi, Kenya',
+    address: '1st Floor, Ridgeview Place, Ridgeways Road, Off Kiambu Road, P.O. BOX 24156-00100',
+   
+  },
+  {
+    city: 'Thika, Kenya',
+    address: 'Alisa Plaza, 4th Floor, Suite 40A, Kwame Nkrumah Rd',
+    
+  },
+  {
+    city: 'CBD drop-off location, Nairobi, Kenya',
+    address: 'Hughes Building, 4th Floor, Suite 401, Kenyatta Avenue',
+    
+  }
+];
     const quickLinks = [
         { title: 'Home', path: '/' },
         { title: 'About', path: '/about' },
