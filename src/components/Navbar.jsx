@@ -1,9 +1,9 @@
-// src/components/Navbar.jsx
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Logo from '../assets/cclogo.jpeg';
 
-export const Navbar = () => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
 
@@ -23,14 +23,21 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Decide whether to render a Router Link or a plain anchor
-  const renderLink = (link, onClick = () => {}) =>
+  const renderLink = (link, onClick = () => { }) =>
     link.href.startsWith("/") ? (
-      <Link to={link.href} className="hover:text-[#D4AF37] transition font-medium" onClick={onClick}>
+      <Link
+        to={link.href}
+        onClick={onClick}
+        className="hover:text-[#D4AF37] transition font-medium whitespace-nowrap"
+      >
         {link.name}
       </Link>
     ) : (
-      <a href={link.href} className="hover:text-[#D4AF37] transition font-medium" onClick={onClick}>
+      <a
+        href={link.href}
+        onClick={onClick}
+        className="hover:text-[#D4AF37] transition font-medium whitespace-nowrap"
+      >
         {link.name}
       </a>
     );
@@ -38,32 +45,44 @@ export const Navbar = () => {
   return (
     <>
       <nav className="fixed top-0 w-full bg-[#101527] text-white z-50 shadow-md">
-        <div className="max-w-7xl mx-auto px-6 md:px-20 flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-bold text-[#D4AF37] z-50">
-            Chege & Chege Advocates
-          </Link>
+        <div className="max-w-7xl mx-auto px-6 md:px-24 h-20 flex items-center justify-between">
 
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex space-x-8">
-            {links.map((link) => (
-              <li key={link.name}>{renderLink(link)}</li>
-            ))}
-          </ul>
+          {/* LEFT: LOGO */}
+          <div className="flex-shrink-0">
+            <img src={Logo} alt="Chege & Chege Advocates"   className="h-14 md:h-20 object-contain " />
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
+          </div>
+
+          {/* CENTER: LINKS */}
+          <div className="hidden md:flex flex-1 justify-center">
+            <ul className="flex space-x-10 text-sm font-medium">
+              {links.map((link) => (
+                <li key={link.name}>{renderLink(link)}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* RIGHT: CTA */}
+          <div className="hidden md:flex flex-shrink-0 ml-10">
             <a
               href="#contact"
-              className="bg-[#D4AF37] text-[#101527] px-6 py-2 rounded font-semibold shadow hover:bg-[#c29d2f] transition"
+              className="bg-[#D4AF37] text-[#101527] 
+                         px-8 py-3 min-w-[190px]
+                         text-center rounded-md font-semibold
+                         shadow-md hover:bg-[#c29d2f] transition"
             >
               Book Consultation
             </a>
           </div>
 
-          {/* Mobile Hamburger */}
-          <div className="md:hidden z-50">
-            <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {/* MOBILE TOGGLE */}
+          <div className="md:hidden ml-auto">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -74,21 +93,24 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU */}
         <motion.div
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
           transition={{ duration: 0.3 }}
           className="md:hidden overflow-hidden bg-[#101527]"
         >
-          <ul className="flex flex-col px-6 py-4 space-y-4">
+          <ul className="flex flex-col px-8 py-6 space-y-5 text-base">
             {links.map((link) => (
-              <li key={link.name}>{renderLink(link, () => setIsOpen(false))}</li>
+              <li key={link.name}>
+                {renderLink(link, () => setIsOpen(false))}
+              </li>
             ))}
             <li>
               <a
                 href="#contact"
-                className="block mt-2 bg-[#D4AF37] text-[#101527] px-6 py-2 rounded font-semibold shadow hover:bg-[#c29d2f] transition text-center"
+                className="block bg-[#D4AF37] text-[#101527] 
+                           px-6 py-3 rounded-md font-semibold text-center"
               >
                 Book Consultation
               </a>
@@ -97,17 +119,17 @@ export const Navbar = () => {
         </motion.div>
       </nav>
 
-      {/* Sticky CTA for mobile */}
+      {/* STICKY MOBILE CTA */}
       {showStickyCTA && (
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
+          className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:hidden"
         >
           <a
             href="#contact"
-            className="bg-[#D4AF37] text-[#101527] px-6 py-3 rounded font-semibold shadow-lg"
+            className="bg-[#D4AF37] text-[#101527] px-8 py-3 rounded-md font-semibold shadow-lg"
           >
             Book Consultation
           </a>
@@ -116,3 +138,5 @@ export const Navbar = () => {
     </>
   );
 };
+
+export default Navbar;

@@ -1,21 +1,10 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-/* Layout */
-import { Navbar } from "./components/Navbar";
-
-/* Home sections */
+import Navbar  from "./components/Navbar";
 import { Hero } from "./components/Hero";
-import { AboutUs } from "./components/Aboutus";
 import { Differentiation } from "./components/Differentiation";
 import { PracticeAreas } from "./components/PracticeAreas";
 import ClientShowcase from "./components/ClientShowcase";
-import ContactForm from "./components/BookConsultation";
-
-/* Blog pages */
-//import BlogPage from "./pages/BlogPage";
-
-
 import TeamPage from "./pages/TeamPage";
 import BlogSection from "./components/Blog/BlogSection";
 import FeaturedBlogs from "./components/Blog/FeaturedBlogs";
