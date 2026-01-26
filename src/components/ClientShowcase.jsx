@@ -1,27 +1,46 @@
 import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import achieversdrivingschool from "../assets/achieversdrivingschool.png";
+import alchemyventures from "../assets/alchemyventures.png";
+import beebeejump from "../assets/beebeejump.png";
+import byob from "../assets/byob.jpg";
+import citylighters from "../assets/citylighters.png";
+import CSG from "../assets/CSG.png";
+import dhamini from "../assets/dhamini.png";
+import dookasonline from "../assets/dookasonline.jpg";
+import eusmsorg from "../assets/eusmsorg.png";
+import femmelogistics from "../assets/femmelogistics.jpg";
+import gfalogo from "../assets/gfalogo.jpg";
+import keypointpowerlimited from "../assets/keypointpowerlimited.png";
+import MIG from "../assets/MIG.png";
+import nsigroup from "../assets/nsigroup.jpg";
+import penielacumen from "../assets/penielacumen.png";
+import PGLLogo from "../assets/PGLLogo.png";
+import royalmotors from "../assets/royalmotors.jpg";
+import RycultureLogo from "../assets/RycultureLogo.png";
+import uphillservices from "../assets/uphillservices.png";
 
 const clients = [
-  { name: "Achievers Driving School", logo: "/assets/achieversdrivingschool.png" },
-  { name: "Alchemy Ventures", logo: "/assets/alchemyventures.png" },
-  { name: "Bring Your Own Bible", logo: "/assets/byob.jpg" },
-  { name: "Bee Bee Jump", logo: "/assets/beebeejump.png" },
-  { name: "City Lighters Church", logo: "/assets/citylighters.png" },
-  { name: "CSG", logo: "/assets/CSG.png" },
-  { name: "Dhamini Sacco", logo: "/assets/dhamini.png" },
-  { name: "Dookas Online", logo: "/assets/dookasonline.jpg" },
-  { name: "EUSMS Organization", logo: "/assets/eusmsorg.png" },
-  { name: "Femme Logistics", logo: "/assets/femmelogistics.jpg" },
-  { name: "Glorious Fountain Academy", logo: "/assets/gfalogo.jpg" },
-  { name: "Keypoint Power Limited", logo: "/assets/keypointpowerlimited.png" },
-  { name: "MIG", logo: "/assets/MIG.png" },
-  { name: "NSI Group", logo: "/assets/nsigroup.jpg" },
-  { name: "PGL", logo: "/assets/PGLLogo.png" },
-  { name: "Ryculture Limited", logo: "/assets/RycultureLogo.png" },
-  { name: "Royal Max Motors", logo: "/assets/royalmotors.jpg" },
-  { name: "Uphill Engineering Services", logo: "/assets/uphillservices.png" },
-  { name: "The Peniel Acumen", logo: "/assets/penielacumen.png" },
+  { name: "Achievers Driving School", logo: achieversdrivingschool },
+  { name: "Alchemy Ventures", logo: alchemyventures },
+  { name: "Bring Your Own Bible", logo: byob },
+  { name: "Bee Bee Jump", logo: beebeejump },
+  { name: "City Lighters Church", logo: citylighters },
+  { name: "CSG", logo: CSG },
+  { name: "Dhamini Sacco", logo: dhamini },
+  { name: "Dookas Online", logo: dookasonline },
+  { name: "EUSMS Organization", logo: eusmsorg },
+  { name: "Femme Logistics", logo: femmelogistics },
+  { name: "Glorious Fountain Academy", logo:gfalogo },
+  { name: "Keypoint Power Limited", logo: keypointpowerlimited },
+  { name: "MIG", logo: MIG },
+  { name: "NSI Group", logo: nsigroup },
+  { name: "PGL", logo: PGLLogo },
+  { name: "Ryculture Limited", logo: RycultureLogo },
+  { name: "Royal Max Motors", logo: royalmotors },
+  { name: "Uphill Engineering Services", logo: uphillservices },
+  { name: "The Peniel Acumen", logo: penielacumen },
 ];
 
 export default function ClientShowcase() {

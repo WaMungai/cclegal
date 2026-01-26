@@ -4,8 +4,8 @@ import imageUrlBuilder from '@sanity/image-url'
 
 // Create the Sanity client
 export const client = createClient({
-  projectId: '3ung6nv4',   // replace with your actual projectId
-  dataset: 'production',
+  projectId:  process.env.REACT_APP_SANITY_PROJECT_ID, //'3ung6nv4',
+  dataset:  process.env.REACT_APP_SANITY_DATASET || "production",//'production',
   apiVersion: '2026-01-01',
   useCdn: true,
 })
