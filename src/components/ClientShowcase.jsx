@@ -1,7 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
 
 const clients = [
   { name: "Achievers Driving School", logo: "/assets/achieversdrivingschool.png" },
@@ -31,26 +30,50 @@ export default function ClientShowcase() {
   const scroll = (direction) => {
     if (containerRef.current) {
       const scrollAmount = direction === "left" ? -300 : 300;
-      containerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      containerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
     }
   };
+
+ 
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const interval = setInterval(() => {
+      container.scrollBy({ left: 1, behavior: "smooth" });
+
+      // Loop back to start
+      if (
+        container.scrollLeft + container.offsetWidth >=
+        container.scrollWidth
+      ) {
+        container.scrollLeft = 0;
+      }
+    }, 20); // smaller = smoother & faster
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="py-20 px-6 md:px-20 bg-gray-50 relative">
       <h2 className="text-3xl font-semibold text-center mb-12">
-        Client Show Case & Testimonials
+        Client Showcase
       </h2>
 
       {/* Scroll Arrows */}
       <button
         onClick={() => scroll("left")}
-        className="hidden md:flex absolute top-1/2 left-0 transform -translate-y-1/2 bg-white shadow-lg rounded-full w-10 h-10 items-center justify-center z-10 hover:bg-gray-100 transition"
+        className="hidden md:flex absolute top-1/2 left-0 -translate-y-1/2 bg-white shadow-lg rounded-full w-10 h-10 items-center justify-center z-10 hover:bg-gray-100 transition"
       >
         <FaChevronLeft />
       </button>
+
       <button
         onClick={() => scroll("right")}
-        className="hidden md:flex absolute top-1/2 right-0 transform -translate-y-1/2 bg-white shadow-lg rounded-full w-10 h-10 items-center justify-center z-10 hover:bg-gray-100 transition"
+        className="hidden md:flex absolute top-1/2 right-0 -translate-y-1/2 bg-white shadow-lg rounded-full w-10 h-10 items-center justify-center z-10 hover:bg-gray-100 transition"
       >
         <FaChevronRight />
       </button>
@@ -59,7 +82,7 @@ export default function ClientShowcase() {
         ref={containerRef}
         className="overflow-x-auto scrollbar-hide flex space-x-6 md:space-x-8"
       >
-        {clients.map((client, i) => (
+        {clients.map((client) => (
           <motion.div
             key={client.name}
             whileHover={{ scale: 1.05 }}
@@ -71,6 +94,9 @@ export default function ClientShowcase() {
                 src={client.logo}
                 alt={client.name}
                 className="max-w-full max-h-full object-contain"
+                onError={(e) =>
+                  (e.currentTarget.src = "/assets/placeholder.png")
+                }
               />
             </div>
             <h3 className="font-semibold text-center">{client.name}</h3>
