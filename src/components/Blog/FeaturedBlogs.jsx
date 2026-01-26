@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { client, urlFor } from './sanityClient'
-import { PortableText } from '@portabletext/react'
 import { useNavigate } from 'react-router-dom'
 
 export default function FeaturedBlogs() {
