@@ -39,7 +39,7 @@ export const Hero = () => {
             Book a Consultation
           </a>
           <a
-            href="#services"
+            href="#practiceareas"
             className="border-2 border-[#D4AF37] text-[#D4AF37] px-6 py-3 rounded font-semibold hover:bg-[#D4AF37] hover:text-[#101527] transition"
           >
             Explore Practice Areas

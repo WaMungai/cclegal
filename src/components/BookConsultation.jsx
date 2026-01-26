@@ -28,7 +28,7 @@ export default function BookConsultation() {
       {/* Calendly inline widget */}
       <div
         className="calendly-inline-widget"
-        data-url="https://calendly.com/jwamungai8/30min"
+        data-url="https://calendly.com/cclegalllp/30min"
         style={{
           minWidth: '320px',
           height: '630px',

@@ -1,12 +1,12 @@
 import React from 'react'
-import { FaLinkedin, FaInstagram } from 'react-icons/fa'
+import { FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 export default function Footer() {
    const offices = [
   {
     city: 'Nairobi, Kenya',
-    address: '1st Floor, Ridgeview Place, Ridgeways Road, Off Kiambu Road, P.O. BOX 24156-00100',
+    address: 'Ridgeview Place, 1st Floor, Ridgeways Road, Off Kiambu Road, P.O. BOX 24156-00100',
    
   },
   {
@@ -22,7 +22,7 @@ export default function Footer() {
 ];
     const quickLinks = [
         { title: 'Home', path: '/' },
-        { title: 'About', path: '/about' },
+        { title: 'Team', path: '/team' },
         { title: 'Blog', path: '/blog' },
         { title: 'Contact', path: '/contact' }
     ]
@@ -78,7 +78,7 @@ export default function Footer() {
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                     {/* LinkedIn */}
                     <a
-                        href="https://www.linkedin.com/company/yourcompany"
+                        href="https://www.linkedin.com/company/c-c-advocates-llp/"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
@@ -101,7 +101,7 @@ export default function Footer() {
 
                     {/* Instagram */}
                     <a
-                        href="https://www.instagram.com/yourcompany"
+                        href="https://www.instagram.com/cclegal_llp"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
@@ -121,13 +121,36 @@ export default function Footer() {
                     >
                         <FaInstagram />
                     </a>
+
+                         {/* Facebook */}
+                      <a
+                        href="https://www.facebook.com/share/1Bz3C4AGjg/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '40px',
+                            height: '40px',
+                            color: '#fff',
+                            fontSize: '1.5rem',
+                            borderRadius: '50%',
+                            backgroundColor: '#1877F2',
+                            transition: 'transform 0.2s, background-color 0.2s'
+                        }}
+                        onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
+                        onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                    >
+                        <FaFacebook />
+                    </a>
                 </div>
             </div>
 
 
             {/* Copyright */}
             <div style={{ textAlign: 'center', marginTop: '3rem', fontSize: '0.9rem', color: '#aaa' }}>
-                &copy; {new Date().getFullYear()}  Chege & Chege Advocates LLP. All rights reserved.
+                &copy; {new Date().getFullYear()}  Chege & Chege Company Advocates LLP. All rights reserved.
             </div>
         </footer>
     )
