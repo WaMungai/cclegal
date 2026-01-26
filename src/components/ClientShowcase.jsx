@@ -1,18 +1,28 @@
-// src/components/ClientShowcaseCarousel.jsx
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-// Example client data (add as many as needed)
+
 const clients = [
-  { name: "ABC Corporation", logo: "/assets/clients/abc-corp.png" },
-  { name: "XYZ Tech Ltd", logo: "/assets/clients/xyz-tech.png" },
-  { name: "Global NGO Initiative", logo: "/assets/clients/global-ngo.png" },
-  { name: "Real Estate Ventures", logo: "/assets/clients/real-estate.png" },
-  { name: "Finance Group", logo: "/assets/clients/finance-group.png" },
-  { name: "Innovate Solutions", logo: "/assets/clients/innovate.png" },
-  { name: "Bright Minds Ltd", logo: "/assets/clients/bright-minds.png" },
-  { name: "Eco Sustainable", logo: "/assets/clients/eco.png" },
+  { name: "Achievers Driving School", logo: "/assets/achieversdrivingschool.png" },
+  { name: "Alchemy Ventures", logo: "/assets/alchemyventures.png" },
+  { name: "Bring Your Own Bible", logo: "/assets/byob.jpg" },
+  { name: "Bee Bee Jump", logo: "/assets/beebeejump.png" },
+  { name: "City Lighters Church", logo: "/assets/citylighters.png" },
+  { name: "CSG", logo: "/assets/CSG.png" },
+  { name: "Dhamini Sacco", logo: "/assets/dhamini.png" },
+  { name: "Dookas Online", logo: "/assets/dookasonline.jpg" },
+  { name: "EUSMS Organization", logo: "/assets/eusmsorg.png" },
+  { name: "Femme Logistics", logo: "/assets/femmelogistics.jpg" },
+  { name: "Glorious Fountain Academy", logo: "/assets/gfalogo.jpg" },
+  { name: "Keypoint Power Limited", logo: "/assets/keypointpowerlimited.png" },
+  { name: "MIG", logo: "/assets/MIG.png" },
+  { name: "NSI Group", logo: "/assets/nsigroup.jpg" },
+  { name: "PGL", logo: "/assets/PGLLogo.png" },
+  { name: "Ryculture Limited", logo: "/assets/RycultureLogo.png" },
+  { name: "Royal Max Motors", logo: "/assets/royalmotors.jpg" },
+  { name: "Uphill Engineering Services", logo: "/assets/uphillservices.png" },
+  { name: "The Peniel Acumen", logo: "/assets/penielacumen.png" },
 ];
 
 export default function ClientShowcase() {
