@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'Legal Insights',
 
-  projectId: '3ung6nv4',
-  dataset: 'production',
+  projectId: process.env.REACT_APP_SANITY_PROJECT_ID, //'3ung6nv4',
+  dataset: process.env.REACT_APP_SANITY_DATASET || "production",//'production',
 
   plugins: [structureTool(), visionTool()],
 
