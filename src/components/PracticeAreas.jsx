@@ -17,7 +17,6 @@ import {
   FaBalanceScale 
 } from "react-icons/fa";
 
-// All 16 practice areas
 const services = [
   {
     title: "Corporate Law",
@@ -283,6 +282,14 @@ export const PracticeAreas = () => {
 
   const displayedServices = showAll ? services : services.slice(0, 9);
 
+  const handleToggleShowAll = () => {
+    if (showAll) {
+      const section = document.getElementById("practiceareas");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    }
+    setShowAll(!showAll);
+  };
+
   return (
     <section id="practiceareas" className="px-6 md:px-20 py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto text-center">
@@ -291,11 +298,20 @@ export const PracticeAreas = () => {
           We provide tailored legal support across a wide range of practice areas, focused on solving complex legal challenges and enabling sustainable, scalable growth.
         </p>
 
-        {/* Grid of cards */}
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Animated grid */}
+        <motion.div
+          className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          animate="visible"
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        >
           {displayedServices.map((service, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.4 }}
               className="group bg-white rounded-xl shadow hover:shadow-xl hover:scale-[1.02] transition transform p-6 flex flex-col items-start gap-4 cursor-pointer"
             >
               <div>{service.icon}</div>
@@ -306,14 +322,14 @@ export const PracticeAreas = () => {
               >
                 View Services &rarr;
               </button>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View More / Show Less */}
         {services.length > 9 && (
           <button
-            onClick={() => setShowAll(!showAll)}
+            onClick={handleToggleShowAll}
             className="mt-8 px-6 py-3 bg-[#D4AF37] text-[#101527] rounded font-semibold hover:bg-[#c29d2f] transition"
           >
             {showAll ? "Show Less" : "View More Practice Areas"}
