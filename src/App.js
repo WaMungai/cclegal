@@ -65,7 +65,7 @@ const HomePage = ({ posts }) => {
       </section>
 
       {/* Contact Form */}
-      <section id="contact" className="pt-16">
+      <section id="" className="pt-16">
         <BookConsultation />
       </section>
 
