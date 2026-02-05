@@ -41,7 +41,7 @@ export default function BlogSection() {
 
   return (
     <section style={{ padding: '4rem 2rem', background: '#f9f9f9' }}>
-      <h1 className="text-3xl font-semibold text-center mb-12">Our Blog</h1>
+      <h1 className="text-3xl font-semibold text-center mb-12">Legal Insights</h1>
 
       <div style={{
         display: 'grid',

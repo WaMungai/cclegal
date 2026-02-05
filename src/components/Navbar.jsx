@@ -19,12 +19,13 @@ const Navbar = () => {
   const location = useLocation();
 
   const links = [
-    { name: "Home", href: "/" },
-    { name: "Practice Areas", href: "#practiceareas" },
+    { name: "Home", href: "#home" },
     { name: "Why Us", href: "#whyus" },
-    { name: "Team", href: "/team" },
+    { name: "Practice Areas", href: "#practiceareas" },
+    
+    ///{ name: "Team", href: "/team" },
     { name: "Blog", href: "/blog" },
-    { name: "Clients", href: "#testimonials" },
+    //{ name: "Clients", href: "#testimonials" },
     { name: "Contact Us", href: "#contact" },
   ];
 

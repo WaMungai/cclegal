@@ -14,12 +14,12 @@ const partners = [
     image: chegeb,
     bio: `Brian specializes in banking, real estate, and construction law, with extensive experience in conveyancing, property development, banking law, and complex commercial transactions.`,
     achievements: [
-      "Secured KES 33M in bank financing for a school startup, including perfection of securities and registration at the Lands and Companies Registries",
-      "Represented developer in a KES 3B ($24m USD) residential project, handling offers, sale agreements, contract negotiations with purchasers and financiers, and registration of transfers.",
-      "Registered and protected trademarks for leading brands in oil manufacturing, entertainment, and hospitality, including a KES 12M licensed mark",
+      "Secured KES 33 Million in bank financing for a school startup, including perfection of securities and registration at the Lands and Companies Registries",
+      "Represented developer in a KES 3B ($24 Million USD) residential project, handling offers, sale agreements, contract negotiations with purchasers and financiers, and registration of transfers.",
+      "Registered and protected trademarks for leading brands in oil manufacturing, entertainment, and hospitality, including a KES 12 Million licensed mark",
       "Advised on trademark licensing, assignments, joint ventures, research collaborations, and tech transfers, ensuring IP strategies aligned with business growth",
       "Established Intellectual Property departments at two previous law firms, building structures that still serve clients today.",
-      "Represented clients in commercial disputes, insurance claims, employment, and debt recovery, including securing dismissal of a KES 5M claim against an insurance company"
+      "Represented clients in commercial disputes, insurance claims, employment, and debt recovery, including securing dismissal of a KES 5 Million claim against an insurance company"
     ],
   },
   {
@@ -31,8 +31,8 @@ const partners = [
     image: cheges,
     bio: `Samuel specializes in commercial and technology law, with deep expertise in data protection, intellectual property, regulatory compliance, and cross-border legal advisory.`,
     achievements: [
-      "Advised on a successful conveyancing transaction valued at $1.6 million USD.",
-      "Led the strategy and execution for debt recovery on multiple debts totaling over $1 million USD.",
+      "Advised on a successful conveyancing transaction valued at $1.6 Million USD.",
+      "Led the strategy and execution for debt recovery on multiple debts totaling over $1 Million USD.",
       "Conducted comprehensive due diligence for seed and pre-seed venture investments, using both equity and debt instruments, with each investment cycle valued at $300,000 USD.",
       "Actively contributed to the achievement of Go-To-Market (GTM) targets across multiple ventures driving revenue growth and market penetration",
       "Led legal due diligence and regulatory compliance for early-stage investments which included equity and debt financing agreements, investor readiness and investment structuring.",
@@ -43,7 +43,7 @@ const partners = [
 
 // Bold numbers & currency
 const formatAchievement = (text) => {
-  const regex = /((?:KES|\$|USD)?\s?\d[\d,.]*\s?(?:M|million|USD)?)/gi;
+  const regex = /((?:KES|\$|USD)?\s?\d[\d,.]*\s?(?:Million|USD)?)/gi;
   const parts = text.split(regex);
 
   return parts.map((part, i) =>
