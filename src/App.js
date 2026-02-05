@@ -12,6 +12,7 @@ import BlogPage from "./components/Blog/BlogPage";
 import PostPage from "./components/Blog/PostPage";
 import Footer from "./components/Footer";
 import BookConsultation from "./components/BookConsultation";
+import Partners from "./components/Partners";
 
 
 
@@ -30,6 +31,11 @@ const HomePage = ({ posts }) => (
     {/* Practice Areas */}
     <section id="practiceareas" className="pt-16">
       <PracticeAreas />
+    </section>
+
+     {/* Partners*/}
+    <section id="testimonials" className="pt-16">
+      <Partners />
     </section>
 
    
@@ -66,16 +72,7 @@ export default function App({ posts }) {
           {/* Home page */}
           <Route path="/" element={<HomePage posts={posts} />} />
 
-          {/* Team page */}
-          <Route
-            path="/team"
-            element={
-              <div className="pt-16 max-w-7xl mx-auto px-6">
-                <TeamPage />
-              </div>
-            }
-          />
-
+      
           <Route
             path="/blog"
             element={
