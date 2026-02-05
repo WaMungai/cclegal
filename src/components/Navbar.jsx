@@ -23,10 +23,10 @@ const Navbar = () => {
     { name: "Why Us", href: "#whyus" },
     { name: "Practice Areas", href: "#practiceareas" },
     { name: "Blog", href: "/blog" },
-    //{ name: "Clients", href: "#testimonials" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Contact Us", href: "#footer" },
   ];
 
+  // Show sticky mobile CTA on scroll
   useEffect(() => {
     const handleScroll = () => setShowStickyCTA(window.scrollY > 300);
     window.addEventListener("scroll", handleScroll);
@@ -35,12 +35,12 @@ const Navbar = () => {
 
   const handleSectionClick = (sectionId) => {
     if (location.pathname !== "/") {
-
+      // Navigate to home and pass target section via state
       navigate("/", { state: { scrollTo: sectionId } });
     } else {
       scrollToSection(sectionId);
     }
-    setIsOpen(false); // Close mobile menu if open
+    setIsOpen(false); // Close mobile menu
   };
 
   const renderLink = (link) => {
@@ -67,27 +67,16 @@ const Navbar = () => {
     <>
       <nav className="fixed top-0 w-full bg-[#101527] text-white z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-6 md:px-24 h-20 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center h-full flex-shrink-0">
+            <img
+              src={Logo}
+              alt="Chege & Chege Advocates"
+              className="h-[90%] w-auto max-w-[420px] object-contain"
+            />
+          </div>
 
-          {/* LEFT: LOGO */}
-          <nav className="h-20 flex items-center px-4">
-            <div className="flex items-center h-full flex-shrink-0">
-              <img
-                src={Logo}
-                alt="Chege & Chege Advocates"
-                className="
-        h-[90%]
-        w-auto
-        max-w-[420px]
-        object-contain
-        block
-      "
-              />
-            </div>
-          </nav>
-
-
-
-          {/* CENTER: LINKS */}
+          {/* Desktop links */}
           <div className="hidden md:flex flex-1 justify-center">
             <ul className="flex space-x-10 text-sm font-medium">
               {links.map((link) => (
@@ -96,20 +85,17 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* RIGHT: CTA */}
+          {/* Desktop CTA */}
           <div className="hidden md:flex flex-shrink-0 ml-10">
             <a
               href="#contact"
-              className="bg-[#D4AF37] text-[#101527] 
-                         px-8 py-3 min-w-[190px]
-                         text-center rounded-md font-semibold
-                         shadow-md hover:bg-[#c29d2f] transition"
+              className="bg-[#D4AF37] text-[#101527] px-8 py-3 min-w-[190px] text-center rounded-md font-semibold shadow-md hover:bg-[#c29d2f] transition"
             >
               Book Consultation
             </a>
           </div>
 
-          {/* MOBILE TOGGLE */}
+          {/* Mobile toggle */}
           <div className="md:hidden ml-auto">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -127,7 +113,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* MOBILE MENU */}
+        {/* Mobile menu */}
         <motion.div
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
@@ -141,8 +127,7 @@ const Navbar = () => {
             <li>
               <a
                 href="#contact"
-                className="block bg-[#D4AF37] text-[#101527] 
-                           px-6 py-3 rounded-md font-semibold text-center"
+                className="block bg-[#D4AF37] text-[#101527] px-6 py-3 rounded-md font-semibold text-center"
               >
                 Book Consultation
               </a>
@@ -151,7 +136,7 @@ const Navbar = () => {
         </motion.div>
       </nav>
 
-      {/* STICKY MOBILE CTA */}
+      {/* Sticky mobile CTA */}
       {showStickyCTA && (
         <motion.div
           initial={{ opacity: 0, y: 50 }}

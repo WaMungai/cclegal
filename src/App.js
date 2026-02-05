@@ -1,11 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar  from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Differentiation } from "./components/Differentiation";
 import { PracticeAreas } from "./components/PracticeAreas";
 import ClientShowcase from "./components/ClientShowcase";
-import TeamPage from "./pages/TeamPage";
 import BlogSection from "./components/Blog/BlogSection";
 import FeaturedBlogs from "./components/Blog/FeaturedBlogs";
 import BlogPage from "./components/Blog/BlogPage";
@@ -13,54 +12,70 @@ import PostPage from "./components/Blog/PostPage";
 import Footer from "./components/Footer";
 import BookConsultation from "./components/BookConsultation";
 import Partners from "./components/Partners";
+import { useEffect } from "react";
 
+// Scroll helper
+const scrollToSection = (sectionId) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
+// Home page component with scroll-on-mount logic
+const HomePage = ({ posts }) => {
+  const location = useLocation();
 
-const HomePage = ({ posts }) => (
-  <>
-    {/* Hero */}
-    <section id="home" className="pt-16">
-      <Hero />
-    </section>
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      scrollToSection(location.state.scrollTo);
+    }
+  }, [location.state]);
 
-     {/* Why Us / Differentiation */}
-    <section id="whyus" className="pt-16">
-      <Differentiation />
-    </section>
+  return (
+    <>
+      {/* Hero */}
+      <section id="home" className="pt-16">
+        <Hero />
+      </section>
 
-    {/* Practice Areas */}
-    <section id="practiceareas" className="pt-16">
-      <PracticeAreas />
-    </section>
+      {/* Why Us / Differentiation */}
+      <section id="whyus" className="pt-16">
+        <Differentiation />
+      </section>
 
-     {/* Partners*/}
-    <section id="testimonials" className="pt-16">
-      <Partners />
-    </section>
+      {/* Practice Areas */}
+      <section id="practiceareas" className="pt-16">
+        <PracticeAreas />
+      </section>
 
-   
+      {/* Partners */}
+      <section id="partners" className="pt-16">
+        <Partners />
+      </section>
 
-    {/* Testimonials / Client Showcase */}
-    <section id="testimonials" className="pt-16">
-      <ClientShowcase />
-    </section>
+      {/* Client Showcase */}
+      <section id="clients" className="pt-16">
+        <ClientShowcase />
+      </section>
 
-    <section id="testimonials" className="pt-16">
-      <FeaturedBlogs />
-    </section>
+      {/* Featured Blogs */}
+      <section id="blogs" className="pt-16">
+        <FeaturedBlogs />
+      </section>
 
+      {/* Contact Form */}
+      <section id="contact" className="pt-16">
+        <BookConsultation />
+      </section>
 
-
-    {/* Contact Form */}
-    <section id="contact" className="pt-16">
-      <BookConsultation />
-    </section>
-
-    <section id="contact" className="pt-16">
-      <Footer />
-    </section>
-  </>
-);
+      {/* Footer */}
+      <section id="footer" className="pt-16">
+        <Footer />
+      </section>
+    </>
+  );
+};
 
 export default function App({ posts }) {
   return (
@@ -72,7 +87,7 @@ export default function App({ posts }) {
           {/* Home page */}
           <Route path="/" element={<HomePage posts={posts} />} />
 
-      
+          {/* Blog section page */}
           <Route
             path="/blog"
             element={
@@ -82,10 +97,11 @@ export default function App({ posts }) {
             }
           />
 
-          <Route path="/blog" element={<BlogPage />} />
+          {/* Individual blog post */}
           <Route path="/blog/:slug" element={<PostPage />} />
 
-
+          {/* Blog page */}
+          <Route path="/blogpage" element={<BlogPage />} />
         </Routes>
       </div>
     </Router>
