@@ -22,15 +22,17 @@ const HomePage = ({ posts }) => (
       <Hero />
     </section>
 
+     {/* Why Us / Differentiation */}
+    <section id="whyus" className="pt-16">
+      <Differentiation />
+    </section>
+
     {/* Practice Areas */}
     <section id="practiceareas" className="pt-16">
       <PracticeAreas />
     </section>
 
-    {/* Why Us / Differentiation */}
-    <section id="whyus" className="pt-16">
-      <Differentiation />
-    </section>
+   
 
     {/* Testimonials / Client Showcase */}
     <section id="testimonials" className="pt-16">
