@@ -128,7 +128,7 @@ export default function Partners() {
       id="partners"
       className="max-w-7xl mx-auto px-6 py-20 text-left"
     >
-      <h2 className="text-center text-4xl md:text-5xl font-bold text-[#101527]">
+      <h2 className="text-center text-4xl md:text-5xl font-bold text-[#101527] mb-12">
         <br />
         Meet The Partners
       </h2>
