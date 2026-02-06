@@ -147,8 +147,7 @@ export default function ClientShowcase() {
 
         {/* Trust Line */}
         <p className="mt-10 text-sm text-gray-500">
-          Building long-term partnerships through reliable, scalable digital
-          solutions.
+         Your Legal Edge In A Changing World
         </p>
       </div>
     </section>
