@@ -54,8 +54,8 @@ export const Differentiation = () => {
        
 
         {/* HEADER */}
-        <div className="text-center mb-14 relative z-20">
-          <h2 className="text-3xl font-bold text-[#101527]">
+        <div className="text-4xl md:text-5xl font-bold text-[#101527]">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#101527]">
             Why Choose Us
           </h2>
           <p className="mt-4 text-gray-700 text-lg md:text-xl max-w-3xl mx-auto">

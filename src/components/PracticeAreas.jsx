@@ -293,7 +293,7 @@ export const PracticeAreas = () => {
   return (
     <section id="practiceareas" className="px-6 md:px-20 py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold text-[#101527]">Practice Areas & Services</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-[#101527]">Practice Areas & Services</h2>
         <p className="mt-4 text-gray-700 text-lg md:text-xl">
           We provide tailored legal support across a wide range of practice areas, focused on solving complex legal challenges and enabling sustainable, scalable growth.
         </p>

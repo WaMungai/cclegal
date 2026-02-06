@@ -36,7 +36,7 @@ export default function FeaturedBlogs() {
 
   return (
     <section style={{ padding: '4rem 2rem', background: '#f9f9f9' }}>
-      < h2 className="text-3xl font-semibold text-center mb-12">Legal Insights</h2>
+      < h2 className="text-4xl md:text-5xl font-bold text-[#101527]">Legal Insights</h2>
 
       <div style={{
         display: 'grid',

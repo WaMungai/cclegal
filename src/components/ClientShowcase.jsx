@@ -78,7 +78,7 @@ export default function ClientShowcase() {
 
   return (
     <section className="py-20 px-6 md:px-20 bg-gray-50 relative">
-      <h2 className="text-3xl font-semibold text-center mb-12">
+      <h2 className="text-4xl md:text-5xl font-bold text-[#101527]">
         Client Showcase
       </h2>
 
