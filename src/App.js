@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import BookConsultation from "./components/BookConsultation";
 import Partners from "./components/Partners";
 import { useEffect } from "react";
+import { AboutUs } from "./components/Aboutus";
 
 // Scroll helper
 const scrollToSection = (sectionId) => {
@@ -37,6 +38,11 @@ const HomePage = ({ posts }) => {
       {/* Hero */}
       <section id="home" className="pt-16">
         <Hero />
+      </section>
+
+       {/* Hero */}
+      <section id="aboutus" className="pt-16">
+        <AboutUs />
       </section>
 
       {/* Why Us / Differentiation */}

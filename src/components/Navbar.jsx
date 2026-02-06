@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import Logo from '../assets/cclegallogo.png';
+import Logo from "../assets/cclegallogo.png";
 
 // Scroll helper
 const scrollToSection = (sectionId) => {
@@ -20,6 +20,7 @@ const Navbar = () => {
 
   const links = [
     { name: "Home", href: "#home" },
+    { name: "About Us", href: "#aboutus" },
     { name: "Why Us", href: "#whyus" },
     { name: "Practice Areas", href: "#practiceareas" },
     { name: "Team", href: "#partners" },
@@ -27,7 +28,7 @@ const Navbar = () => {
     { name: "Contact Us", href: "#footer" },
   ];
 
-  // Show sticky mobile CTA on scroll
+  // Sticky CTA on scroll
   useEffect(() => {
     const handleScroll = () => setShowStickyCTA(window.scrollY > 300);
     window.addEventListener("scroll", handleScroll);
@@ -36,38 +37,42 @@ const Navbar = () => {
 
   const handleSectionClick = (sectionId) => {
     if (location.pathname !== "/") {
-      // Navigate to home and pass target section via state
       navigate("/", { state: { scrollTo: sectionId } });
     } else {
       scrollToSection(sectionId);
     }
-    setIsOpen(false); // Close mobile menu
+    setIsOpen(false);
   };
 
   const renderLink = (link) => {
-    const isSectionLink = link.href.startsWith("#");
-    return isSectionLink ? (
-      <button
-        onClick={() => handleSectionClick(link.href.substring(1))}
-        className="hover:text-[#D4AF37] transition font-medium whitespace-nowrap"
-      >
-        {link.name}
-      </button>
-    ) : (
-      <Link
-        to={link.href}
-        className="hover:text-[#D4AF37] transition font-medium whitespace-nowrap"
-        onClick={() => setIsOpen(false)}
-      >
-        {link.name}
-      </Link>
-    );
-  };
+  const isSectionLink = link.href.startsWith("#");
+  const baseClasses = "text-[#101527] font-medium whitespace-nowrap relative transition-all";
+  const hoverUnderline = "hover:border-b-2 hover:border-[#D4AF37]";
+
+  return isSectionLink ? (
+    <button
+      onClick={() => handleSectionClick(link.href.substring(1))}
+      className={`${baseClasses} ${hoverUnderline} pb-1`}
+    >
+      {link.name}
+    </button>
+  ) : (
+    <Link
+      to={link.href}
+      className={`${baseClasses} ${hoverUnderline} pb-1`}
+      onClick={() => setIsOpen(false)}
+    >
+      {link.name}
+    </Link>
+  );
+};
+
 
   return (
     <>
-      <nav className="fixed top-0 w-full bg-[#101527] text-white z-50 shadow-md">
+      <nav className="fixed top-0 w-full bg-white text-[#101527] z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-6 md:px-24 h-20 flex items-center justify-between">
+          
           {/* Logo */}
           <div className="flex items-center h-full flex-shrink-0">
             <img
@@ -100,10 +105,15 @@ const Navbar = () => {
           <div className="md:hidden ml-auto">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="focus:outline-none"
+              className="focus:outline-none text-[#101527]"
               aria-label="Toggle Menu"
             >
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 {isOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -119,7 +129,7 @@ const Navbar = () => {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden bg-[#101527]"
+          className="md:hidden overflow-hidden bg-white"
         >
           <ul className="flex flex-col px-8 py-6 space-y-5 text-base">
             {links.map((link) => (
