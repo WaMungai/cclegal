@@ -19,7 +19,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const links = [
-    //{ name: "Home", href: "#home" },
+    { name: "Home", href: "#home" },
     { name: "About Us", href: "#aboutus" },
     //{ name: "Why Us", href: "#whyus" },
     { name: "Practice Areas", href: "#practiceareas" },
@@ -76,7 +76,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center h-full flex-shrink-0">
             <img
-              id="home"
+              
               src={Logo}
               alt="Chege & Chege Advocates"
               className="h-[90%] w-auto max-w-[420px] object-contain"
