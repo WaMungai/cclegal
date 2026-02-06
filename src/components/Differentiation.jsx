@@ -58,7 +58,7 @@ export const Differentiation = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-[#101527]">
             Why Choose Us
           </h2>
-          <p className="mt-4 text-gray-700 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="mt-4 text-gray-500 text-lg md:text-xl mb-12">
             At C&C Advocates LLP, we distinguish ourselves through our
             values, approach, and commitment to client success.
           </p>
