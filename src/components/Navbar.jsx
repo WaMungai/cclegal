@@ -19,12 +19,12 @@ const Navbar = () => {
   const location = useLocation();
 
   const links = [
-    { name: "Home", href: "#home" },
+    //{ name: "Home", href: "#home" },
     { name: "About Us", href: "#aboutus" },
-    { name: "Why Us", href: "#whyus" },
+    //{ name: "Why Us", href: "#whyus" },
     { name: "Practice Areas", href: "#practiceareas" },
     { name: "Team", href: "#partners" },
-    { name: "Blog", href: "/blog" },
+    { name: "Insights", href: "/blog" },
     { name: "Contact Us", href: "#footer" },
   ];
 
@@ -45,37 +45,38 @@ const Navbar = () => {
   };
 
   const renderLink = (link) => {
-  const isSectionLink = link.href.startsWith("#");
-  const baseClasses = "text-[#101527] font-medium whitespace-nowrap relative transition-all";
-  const hoverUnderline = "hover:border-b-2 hover:border-[#D4AF37]";
+    const isSectionLink = link.href.startsWith("#");
+    const baseClasses = "text-[#101527] font-medium whitespace-nowrap relative transition-all";
+    const hoverUnderline = "hover:border-b-2 hover:border-[#D4AF37]";
 
-  return isSectionLink ? (
-    <button
-      onClick={() => handleSectionClick(link.href.substring(1))}
-      className={`${baseClasses} ${hoverUnderline} pb-1`}
-    >
-      {link.name}
-    </button>
-  ) : (
-    <Link
-      to={link.href}
-      className={`${baseClasses} ${hoverUnderline} pb-1`}
-      onClick={() => setIsOpen(false)}
-    >
-      {link.name}
-    </Link>
-  );
-};
+    return isSectionLink ? (
+      <button
+        onClick={() => handleSectionClick(link.href.substring(1))}
+        className={`${baseClasses} ${hoverUnderline} pb-1`}
+      >
+        {link.name}
+      </button>
+    ) : (
+      <Link
+        to={link.href}
+        className={`${baseClasses} ${hoverUnderline} pb-1`}
+        onClick={() => setIsOpen(false)}
+      >
+        {link.name}
+      </Link>
+    );
+  };
 
 
   return (
     <>
       <nav className="fixed top-0 w-full bg-white text-[#101527] z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-6 md:px-24 h-20 flex items-center justify-between">
-          
+
           {/* Logo */}
           <div className="flex items-center h-full flex-shrink-0">
             <img
+              id="home"
               src={Logo}
               alt="Chege & Chege Advocates"
               className="h-[90%] w-auto max-w-[420px] object-contain"
