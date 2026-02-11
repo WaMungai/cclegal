@@ -5,19 +5,25 @@ import { Link } from 'react-router-dom'
 export default function Footer() {
   const offices = [
     {
-      city: 'Nairobi, Kenya',
+      city: 'Nairobi',
+      area: 'Westlands',
+      type: 'Main Office',
       address:
-        'Ridgeview Place, 1st Floor, Ridgeways Road, Off Kiambu Road, P.O. BOX 24156-00100',
+        'Westlands Commercial Centre, Old Block (Block D), 2nd Floor, Suite 2, Off Ring Road Parklands.',
     },
     {
-      city: 'Thika, Kenya',
+      city: 'Thika',
+      area: null,
+      type: 'Office',
       address:
-        'Alisa Plaza, 4th Floor, Suite 40A, Kwame Nkrumah Rd',
+        'Alisa Plaza, 4th Floor, Suite 40A, Kwame Nkrumah Road.',
     },
     {
-      city: 'CBD drop-off location, Nairobi, Kenya',
+      city: 'Nairobi',
+      area: 'CBD',
+      type: 'Drop-off Location',
       address:
-        'Hughes Building, 4th Floor, Suite 401, Kenyatta Avenue',
+        'Hughes Building, 4th Floor, Suite 401, Kenyatta Avenue.',
     },
   ]
 
@@ -26,62 +32,39 @@ export default function Footer() {
     { title: 'About Us', path: '/aboutus' },
     { title: 'Practice Areas', path: '/practiceareas' },
     { title: 'Blog', path: '/blog' },
-    
   ]
 
   return (
-    <footer
-      style={{
-        backgroundColor: '#101527',
-        color: '#fff',
-        padding: '4rem 2rem',
-        marginTop: '4rem',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          gap: '4rem',
-          textAlign: 'left',
-        }}
-      >
+    <footer style={footerStyle}>
+      <div style={containerStyle}>
+
         {/* Offices */}
-        <div style={{ flex: '1 1 280px' }}>
-          <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
-            Our Offices
-          </h3>
+        <div style={columnStyle}>
+          <h3 style={headingStyle}>Our Offices</h3>
+
           {offices.map((office, index) => (
-            <div key={index} style={{ marginBottom: '1rem' }}>
-              <p style={{ fontWeight: 'bold', marginBottom: '0.3rem' }}>
+            <div key={index} style={{ marginBottom: '1.25rem' }}>
+              <p style={officeTitleStyle}>
                 {office.city}
+                {office.area && ` — ${office.area}`}
               </p>
-              <p style={{ marginBottom: '0.2rem', lineHeight: 1.6 }}>
-                {office.address}
-              </p>
+
+              <p style={officeTypeStyle}>{office.type}</p>
+
+              <p style={addressStyle}>{office.address}</p>
             </div>
           ))}
         </div>
 
         {/* Quick Links */}
-        <div style={{ flex: '1 1 200px' }}>
-          <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
-            Quick Links
-          </h3>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        <div style={columnStyle}>
+          <h3 style={headingStyle}>Quick Links</h3>
+          <ul style={listStyle}>
             {quickLinks.map((link) => (
               <li key={link.title} style={{ marginBottom: '0.75rem' }}>
                 <Link
                   to={link.path}
-                  style={{
-                    color: '#fff',
-                    textDecoration: 'none',
-                    transition: 'color 0.2s',
-                  }}
+                  style={linkStyle}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = '#D4AF37')
                   }
@@ -97,56 +80,130 @@ export default function Footer() {
         </div>
 
         {/* Socials */}
-        <div style={{ flex: '1 1 200px' }}>
-          <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
-            Connect with us
-          </h3>
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <a
+        <div style={columnStyle}>
+          <h3 style={headingStyle}>Connect with us</h3>
+          <div style={socialContainerStyle}>
+            <SocialIcon
               href="https://www.linkedin.com/company/c-c-advocates-llp/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={iconStyle('#0A66C2')}
+              bg="#0A66C2"
             >
               <FaLinkedin />
-            </a>
+            </SocialIcon>
 
-            <a
+            <SocialIcon
               href="https://www.instagram.com/cclegal_llp"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={iconStyle('#E4405F')}
+              bg="#E4405F"
             >
               <FaInstagram />
-            </a>
+            </SocialIcon>
 
-            <a
+            <SocialIcon
               href="https://www.facebook.com/share/1Bz3C4AGjg/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={iconStyle('#1877F2')}
+              bg="#1877F2"
             >
               <FaFacebook />
-            </a>
+            </SocialIcon>
           </div>
         </div>
       </div>
 
       {/* Copyright */}
-      <div
-        style={{
-          textAlign: 'left',
-          maxWidth: '1200px',
-          margin: '3rem auto 0',
-          fontSize: '0.9rem',
-          color: '#aaa',
-        }}
-      >
+      <div style={copyrightStyle}>
         &copy; {new Date().getFullYear()} Chege & Chege Company Advocates LLP.
         All rights reserved.
       </div>
     </footer>
   )
+}
+
+/* ---------- Reusable Components ---------- */
+
+const SocialIcon = ({ href, bg, children }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    style={iconStyle(bg)}
+  >
+    {children}
+  </a>
+)
+
+/* ---------- Styles (Left-Aligned Locked) ---------- */
+
+const footerStyle = {
+  backgroundColor: '#101527',
+  color: '#fff',
+  padding: '4rem 2rem',
+  marginTop: '4rem',
+  textAlign: 'left',
+}
+
+const containerStyle = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'flex-start',
+  alignItems: 'flex-start',
+  maxWidth: '1200px',
+  margin: '0 auto',
+  gap: '4rem',
+}
+
+const columnStyle = {
+  flex: '1 1 260px',
+  textAlign: 'left',
+}
+
+const headingStyle = {
+  fontSize: '1.5rem',
+  marginBottom: '1rem',
+  textAlign: 'left',
+}
+
+const officeTitleStyle = {
+  fontWeight: 'bold',
+  marginBottom: '0.2rem',
+  textAlign: 'left',
+}
+
+const officeTypeStyle = {
+  fontSize: '0.85rem',
+  color: '#D4AF37',
+  marginBottom: '0.3rem',
+  textAlign: 'left',
+}
+
+const addressStyle = {
+  lineHeight: 1.6,
+  color: '#ddd',
+  textAlign: 'left',
+}
+
+const listStyle = {
+  listStyle: 'none',
+  padding: 0,
+  margin: 0,
+  textAlign: 'left',
+}
+
+const linkStyle = {
+  color: '#fff',
+  textDecoration: 'none',
+  transition: 'color 0.2s',
+}
+
+const socialContainerStyle = {
+  display: 'flex',
+  gap: '1rem',
+  justifyContent: 'flex-start',
+}
+
+const copyrightStyle = {
+  textAlign: 'left',
+  maxWidth: '1200px',
+  margin: '3rem auto 0',
+  fontSize: '0.9rem',
+  color: '#aaa',
 }
 
 const iconStyle = (bg) => ({
