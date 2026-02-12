@@ -24,51 +24,53 @@ export const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="pl-6 md:pl-24 max-w-2xl"
+          className="px-6 sm:px-8 md:px-24 max-w-2xl"
         >
           {/* Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-white">
-            Your Legal Edge
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-snug sm:leading-tight text-white text-left">
+            Your Legal Edge<br />
             In A Changing World
           </h1>
 
           {/* Subheading */}
-          <p className="mt-4 text-lg sm:text-xl text-white/90">
+          <p className="mt-4 text-base sm:text-lg md:text-xl text-white/90 text-left">
             Practical, forward-thinking legal advice for businesses, innovators,
             and individuals navigating today’s legal landscape.
           </p>
 
           {/* Buttons */}
-          {/* Buttons */}
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center sm:items-start">
-            <a
+          <div className="mt-8 flex flex-col sm:flex-row items-start gap-4 w-full">
+            <motion.a
               href="#contact"
-              className="w-full sm:w-auto text-center
-               bg-[#D4AF37] text-[#101527]
-               px-4 sm:px-6 py-2 sm:py-3 rounded-md
-               font-semibold text-sm sm:text-base
-               shadow-sm
-               hover:bg-[#c29d2f]
-               transition"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto text-center sm:text-left
+                         bg-[#D4AF37] text-[#101527]
+                         px-4 sm:px-6 py-2 sm:py-3 rounded-md
+                         font-semibold text-sm sm:text-base
+                         shadow-sm hover:shadow-md
+                         transition"
             >
               Book a Consultation
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
               href="#practiceareas"
-              className="w-full sm:w-auto text-center
-               text-[#D4AF37]
-               border border-[#D4AF37]
-               px-4 sm:px-6 py-2 sm:py-3 rounded-md
-               font-semibold text-sm sm:text-base
-               hover:bg-[#D4AF37]
-               hover:text-[#101527]
-               transition"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto text-center sm:text-left
+                         text-[#D4AF37]
+                         border border-[#D4AF37]
+                         px-4 sm:px-6 py-2 sm:py-3 rounded-md
+                         font-semibold text-sm sm:text-base
+                         hover:bg-[#D4AF37]
+                         hover:text-[#101527]
+                         shadow-sm hover:shadow-md
+                         transition"
             >
               View Practice Areas
-            </a>
+            </motion.a>
           </div>
-
         </motion.div>
       </div>
     </header>
