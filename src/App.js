@@ -18,12 +18,10 @@ import { AboutUs } from "./components/Aboutus";
 // Scroll helper
 const scrollToSection = (sectionId) => {
   const section = document.getElementById(sectionId);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
+  if (section) section.scrollIntoView({ behavior: "smooth" });
 };
 
-// Home page component with scroll-on-mount logic
+// Home page component (inline)
 const HomePage = ({ posts }) => {
   const location = useLocation();
 
@@ -35,42 +33,34 @@ const HomePage = ({ posts }) => {
 
   return (
     <>
-      {/* Hero */}
       <section id="home" className="pt-16">
         <Hero />
       </section>
 
-       {/* Hero */}
       <section id="aboutus" className="pt-16">
         <AboutUs />
       </section>
 
-      {/* Why Us / Differentiation */}
       <section id="whyus" className="pt-16">
         <Differentiation />
       </section>
 
-      {/* Practice Areas */}
       <section id="practiceareas" className="pt-16">
         <PracticeAreas />
       </section>
 
-      {/* Partners */}
       <section id="partners" className="pt-16">
         <Partners />
       </section>
 
-      {/* Client Showcase */}
       <section id="clients" className="pt-16">
         <ClientShowcase />
       </section>
 
-      {/* Featured Blogs */}
       <section id="blogs" className="pt-16">
         <FeaturedBlogs />
       </section>
 
-      {/* Contact Form */}
       <section id="" className="pt-16">
         <BookConsultation />
       </section>
@@ -90,8 +80,11 @@ export default function App({ posts }) {
         <Navbar />
 
         <Routes>
-          {/* Home page */}
+          {/* Default homepage */}
           <Route path="/" element={<HomePage posts={posts} />} />
+
+          {/* Client portal homepage */}
+          <Route path="/portal" element={<HomePage posts={posts} />} />
 
           {/* Blog section page */}
           <Route
