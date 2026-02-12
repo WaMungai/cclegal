@@ -39,34 +39,36 @@ export const Hero = () => {
           </p>
 
           {/* Buttons */}
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+          {/* Buttons */}
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center sm:items-start">
             <a
               href="#contact"
-              className="inline-flex justify-center items-center
-                         bg-[#D4AF37] text-[#101527]
-                         px-6 py-3 rounded-md
-                         font-semibold
-                         shadow-sm
-                         hover:bg-[#c29d2f]
-                         transition"
+              className="w-full sm:w-auto text-center
+               bg-[#D4AF37] text-[#101527]
+               px-4 sm:px-6 py-2 sm:py-3 rounded-md
+               font-semibold text-sm sm:text-base
+               shadow-sm
+               hover:bg-[#c29d2f]
+               transition"
             >
               Book a Consultation
             </a>
 
             <a
               href="#practiceareas"
-              className="inline-flex justify-center items-center
-                         text-[#D4AF37]
-                         border border-[#D4AF37]
-                         px-6 py-3 rounded-md
-                         font-semibold
-                         hover:bg-[#D4AF37]
-                         hover:text-[#101527]
-                         transition"
+              className="w-full sm:w-auto text-center
+               text-[#D4AF37]
+               border border-[#D4AF37]
+               px-4 sm:px-6 py-2 sm:py-3 rounded-md
+               font-semibold text-sm sm:text-base
+               hover:bg-[#D4AF37]
+               hover:text-[#101527]
+               transition"
             >
               View Practice Areas
             </a>
           </div>
+
         </motion.div>
       </div>
     </header>

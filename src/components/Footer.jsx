@@ -14,7 +14,7 @@ export default function Footer() {
           area: 'Westlands',
           type: 'Main Office',
           address:
-            'Westlands Commercial Centre, Old Block (Block D), 2nd Floor, Nairobi',
+            'Westlands Commercial Centre, Old Block (Block D), 2nd Floor',
         },
         {
           city: 'Thika',
