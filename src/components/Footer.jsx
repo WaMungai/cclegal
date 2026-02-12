@@ -1,33 +1,57 @@
-
 import React from 'react'
 import { FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom' // useLocation for path detection
 
 export default function Footer() {
-  const offices = [
-    {
-      city: 'Nairobi',
-      area: 'Kiambu Road',
-      type: 'Main Office',
-      address:
-        'Ridgeview Place, 1st Floor, Ridgeways Road, Off Kiambu Road, P.O. BOX 24156-00100',
-    },
-    {
-      city: 'Thika',
-      area: null,
-      type: 'Office',
-      address:
-        'Alisa Plaza, 4th Floor, Suite 40A, Kwame Nkrumah Road.',
-    },
-    {
-      city: 'Nairobi',
-      area: 'CBD',
-      type: 'Drop-off Location',
-      address:
-        'Hughes Building, 4th Floor, Suite 401, Kenyatta Avenue.',
-    },
-  ]
+  const location = useLocation()
+  const isClientView = location.pathname.startsWith('/portal') // detect client view
 
+  // Dynamic office data
+  const offices = isClientView
+    ? [
+        {
+          city: 'Nairobi',
+          area: 'Westlands',
+          type: 'Main Office',
+          address:
+            'Westlands Commercial Centre, Old Block (Block D), 2nd Floor, Nairobi',
+        },
+        {
+          city: 'Thika',
+          area: null,
+          type: 'Office',
+          address: 'Alisa Plaza, 4th Floor, Suite 40A, Kwame Nkrumah Road.',
+        },
+        {
+          city: 'Nairobi',
+          area: 'CBD',
+          type: 'Drop-off Location',
+          address: 'Hughes Building, 4th Floor, Suite 401, Kenyatta Avenue.',
+        },
+      ]
+    : [
+        {
+          city: 'Nairobi',
+          area: 'Kiambu Road',
+          type: 'Main Office',
+          address:
+            'Ridgeview Place, 1st Floor, Ridgeways Road, Off Kiambu Road, P.O. BOX 24156-00100',
+        },
+        {
+          city: 'Thika',
+          area: null,
+          type: 'Office',
+          address: 'Alisa Plaza, 4th Floor, Suite 40A, Kwame Nkrumah Road.',
+        },
+        {
+          city: 'Nairobi',
+          area: 'CBD',
+          type: 'Drop-off Location',
+          address: 'Hughes Building, 4th Floor, Suite 401, Kenyatta Avenue.',
+        },
+      ]
+
+  // Quick links remain unchanged
   const quickLinks = [
     { title: 'Home', path: '/' },
     { title: 'About Us', path: '/aboutus' },
@@ -42,16 +66,13 @@ export default function Footer() {
         {/* Offices */}
         <div style={columnStyle}>
           <h3 style={headingStyle}>Our Offices</h3>
-
           {offices.map((office, index) => (
             <div key={index} style={{ marginBottom: '1.25rem' }}>
               <p style={officeTitleStyle}>
                 {office.city}
                 {office.area && ` — ${office.area}`}
               </p>
-
               <p style={officeTypeStyle}>{office.type}</p>
-
               <p style={addressStyle}>{office.address}</p>
             </div>
           ))}
@@ -66,12 +87,8 @@ export default function Footer() {
                 <Link
                   to={link.path}
                   style={linkStyle}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = '#D4AF37')
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = '#fff')
-                  }
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#D4AF37')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#fff')}
                 >
                   {link.title}
                 </Link>
@@ -117,7 +134,6 @@ export default function Footer() {
   )
 }
 
-/* ---------- Reusable Components ---------- */
 
 const SocialIcon = ({ href, bg, children }) => (
   <a
@@ -130,7 +146,6 @@ const SocialIcon = ({ href, bg, children }) => (
   </a>
 )
 
-/* ---------- Styles (Left-Aligned Locked) ---------- */
 
 const footerStyle = {
   backgroundColor: '#101527',
