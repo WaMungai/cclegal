@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { client, urlFor } from './sanityClient'
 import { useNavigate } from 'react-router-dom'
 
+
 export default function FeaturedBlogs() {
   const [posts, setPosts] = useState([])
   const navigate = useNavigate()
