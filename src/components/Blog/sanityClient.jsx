@@ -10,8 +10,6 @@ export const client = createClient({
   useCdn: true,
 })
 
-console.log("Sanity projectId:", process.env.REACT_APP_SANITY_PROJECT_ID);
-console.log("Sanity dataset:", process.env.REACT_APP_SANITY_DATASET);
 
 // Optional: helper to generate image URLs
 const builder = imageUrlBuilder(client)

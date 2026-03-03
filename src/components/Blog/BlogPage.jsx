@@ -51,56 +51,65 @@ export default function BlogPage() {
     if (slug) fetchRelated()
   }, [slug])
 
-  if (!post) return <p style={{ textAlign: 'center', marginTop: '3rem' }}>Loading post...</p>
+  if (!post)
+    return (
+      <p style={{ textAlign: 'center', marginTop: '3rem' }}>
+        Loading post...
+      </p>
+    )
 
-  // PortableText components for links and formatting
-  const portableTextComponents = {
-    marks: {
-      link: ({ value, children }) => {
-        const isExternal = value?.href?.startsWith('http')
-        return (
-          <a
-            href={value?.href}
-            target={isExternal ? '_blank' : undefined}
-            rel={isExternal ? 'noopener noreferrer' : undefined}
-            style={{
-              color: '#0070f3',
-              textDecoration: 'underline',
-            }}
-          >
-            {children}
-          </a>
-        )
-      }
+  // PortableText components with visible link styling
+const portableTextComponents = {
+  marks: {
+    link: ({ value, children }) => {
+        console.log('Rendering link:', value?.href, children)
+      if (!value?.href) return children
+      return (
+        <a
+          href={value.href.startsWith('http') ? value.href : `https://${value.href}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: '#0070f3 !important',           // Blue color to make it visible
+            textDecoration: 'underline', // Underline makes it obvious
+            fontWeight: 600,             // Optional: keeps bold styling
+            cursor: 'pointer',           // Pointer on hover
+            transition: 'opacity 0.2s ease',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.7')}
+          onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+        >
+          {children}
+        </a>
+      )
     },
-    block: {
-      normal: ({ children }) => <p style={{ marginBottom: '1.2rem', textAlign: 'left' }}>{children}</p>,
-      h2: ({ children }) => <h2 style={{ fontSize: '1.8rem', margin: '2rem 0 1rem', textAlign: 'left' }}>{children}</h2>,
-      h3: ({ children }) => <h3 style={{ fontSize: '1.4rem', margin: '1.5rem 0 0.8rem', textAlign: 'left' }}>{children}</h3>,
-    },
-    list: {
-      bullet: ({ children }) => <ul style={{ marginBottom: '1.2rem', paddingLeft: '1.5rem', textAlign: 'left' }}>{children}</ul>,
-      number: ({ children }) => <ol style={{ marginBottom: '1.2rem', paddingLeft: '1.5rem', textAlign: 'left' }}>{children}</ol>
-    },
-    listItem: {
-      bullet: ({ children }) => <li style={{ marginBottom: '0.5rem' }}>{children}</li>,
-      number: ({ children }) => <li style={{ marginBottom: '0.5rem' }}>{children}</li>
-    }
-  }
+  },
+}
 
   const truncateWords = (text, wordLimit = 20) => {
     if (!text) return ''
     const words = text.split(/\s+/)
-    return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : text
+    return words.length > wordLimit
+      ? words.slice(0, wordLimit).join(' ') + '...'
+      : text
   }
 
   const extractPlainText = (blocks) => {
     if (!blocks) return ''
-    return blocks.map(block => block.children?.map(child => child.text).join(' ')).join(' ')
+    return blocks
+      .map((block) => block.children?.map((child) => child.text).join(' '))
+      .join(' ')
   }
 
   return (
-    <section style={{ maxWidth: '850px', margin: '4rem auto', padding: '0 1rem', textAlign: 'left' }}>
+    <section
+      style={{
+        maxWidth: '850px',
+        margin: '4rem auto',
+        padding: '0 1rem',
+        textAlign: 'left',
+      }}
+    >
       {/* Back Button */}
       <button
         onClick={() => navigate('/blog')}
@@ -112,7 +121,7 @@ export default function BlogPage() {
           backgroundColor: '#0070f3',
           color: '#fff',
           fontWeight: 'bold',
-          cursor: 'pointer'
+          cursor: 'pointer',
         }}
       >
         ← Back to Blog
@@ -122,23 +131,36 @@ export default function BlogPage() {
       <h1 style={{ fontSize: '2.4rem', marginBottom: '1rem' }}>{post.title}</h1>
 
       {/* Author & Date */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.75rem',
+          marginBottom: '1.5rem',
+        }}
+      >
         {post.author?.image && (
           <img
             src={urlFor(post.author.image).width(50).height(50).url()}
             alt={post.author.name}
-            style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover' }}
+            style={{
+              width: '50px',
+              height: '50px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+            }}
           />
         )}
         <div style={{ fontSize: '0.9rem', color: '#555' }}>
-          By <strong>{post.author?.name}</strong> | {new Date(post.publishedAt).toLocaleDateString()}
+          By <strong>{post.author?.name}</strong> |{' '}
+          {new Date(post.publishedAt).toLocaleDateString()}
         </div>
       </div>
 
       {/* Categories */}
       {post.categories?.length > 0 && (
         <p style={{ fontSize: '0.85rem', color: '#777', marginBottom: '1.5rem' }}>
-          Categories: {post.categories.map(c => c.title).join(', ')}
+          Categories: {post.categories.map((c) => c.title).join(', ')}
         </p>
       )}
 
@@ -161,9 +183,17 @@ export default function BlogPage() {
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
         <div style={{ marginTop: '4rem' }}>
-          <h2 style={{ fontSize: '1.8rem', marginBottom: '2rem', textAlign: 'left' }}>Related Posts</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
-            {relatedPosts.map(rp => (
+          <h2 style={{ fontSize: '1.8rem', marginBottom: '2rem', textAlign: 'left' }}>
+            Related Posts
+          </h2>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '2rem',
+            }}
+          >
+            {relatedPosts.map((rp) => (
               <div
                 key={rp.slug}
                 onClick={() => navigate(`/blog/${rp.slug}`)}
@@ -173,13 +203,13 @@ export default function BlogPage() {
                   boxShadow: '0 4px 10px rgba(0,0,0,0.08)',
                   cursor: 'pointer',
                   overflow: 'hidden',
-                  transition: 'transform 0.2s, box-shadow 0.2s'
+                  transition: 'transform 0.2s, box-shadow 0.2s',
                 }}
-                onMouseEnter={e => {
+                onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-4px)'
                   e.currentTarget.style.boxShadow = '0 8px 18px rgba(0,0,0,0.12)'
                 }}
-                onMouseLeave={e => {
+                onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)'
                   e.currentTarget.style.boxShadow = '0 4px 10px rgba(0,0,0,0.08)'
                 }}

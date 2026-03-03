@@ -21,7 +21,6 @@ const Navbar = () => {
   const links = [
     { name: "Home", href: "#home" },
     { name: "About Us", href: "#aboutus" },
-    //{ name: "Why Us", href: "#whyus" },
     { name: "Practice Areas", href: "#practiceareas" },
     { name: "Team", href: "#partners" },
     { name: "Insights", href: "/blog" },
@@ -35,18 +34,25 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle clicks on section links
   const handleSectionClick = (sectionId) => {
-    if (location.pathname !== "/") {
-      navigate("/", { state: { scrollTo: sectionId } });
-    } else {
-      scrollToSection(sectionId);
-    }
+    // Close menu first for mobile
     setIsOpen(false);
+
+    // Delay scroll until menu collapse animation completes
+    setTimeout(() => {
+      if (location.pathname !== "/") {
+        navigate("/", { state: { scrollTo: sectionId } });
+      } else {
+        scrollToSection(sectionId);
+      }
+    }, 300); // matches motion.div animation
   };
 
   const renderLink = (link) => {
     const isSectionLink = link.href.startsWith("#");
-    const baseClasses = "text-[#101527] font-medium whitespace-nowrap relative transition-all";
+    const baseClasses =
+      "text-[#101527] font-medium whitespace-nowrap relative transition-all";
     const hoverUnderline = "hover:border-b-2 hover:border-[#D4AF37]";
 
     return isSectionLink ? (
@@ -67,16 +73,13 @@ const Navbar = () => {
     );
   };
 
-
   return (
     <>
       <nav className="fixed top-0 w-full bg-white text-[#101527] z-50 shadow-md">
         <div className="max-w-7xl mx-auto px-6 md:px-24 h-20 flex items-center justify-between">
-
           {/* Logo */}
           <div className="flex items-center h-full flex-shrink-0">
             <img
-              
               src={Logo}
               alt="Chege & Chege Advocates"
               className="h-[90%] w-auto max-w-[420px] object-contain"
@@ -116,9 +119,19 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
               >
                 {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 )}
               </svg>
             </button>
@@ -130,7 +143,9 @@ const Navbar = () => {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden bg-white"
+          className={`md:hidden overflow-hidden bg-white ${
+            isOpen ? "pointer-events-auto" : "pointer-events-none"
+          }`}
         >
           <ul className="flex flex-col px-8 py-6 space-y-5 text-base">
             {links.map((link) => (

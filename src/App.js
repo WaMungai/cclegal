@@ -57,7 +57,7 @@ const HomePage = ({ posts }) => {
         <ClientShowcase />
       </section>
 
-      <section id="blogs" className="pt-16">
+      <section id="insights" className="pt-16">
         <FeaturedBlogs />
       </section>
 
