@@ -62,18 +62,19 @@ export default function BlogPage() {
 const portableTextComponents = {
   marks: {
     link: ({ value, children }) => {
-        console.log('Rendering link:', value?.href, children)
-      if (!value?.href) return children
+      if (!value?.href) return children;
+
+      const href = value.href.startsWith('http') ? value.href : `https://${value.href}`;
+
       return (
         <a
-          href={value.href.startsWith('http') ? value.href : `https://${value.href}`}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            color: '#0070f3 !important',           // Blue color to make it visible
-            textDecoration: 'underline', 
-         
-            cursor: 'pointer',          
+            color: '#0070f3',       // visible blue
+            textDecoration: 'underline', // underlined
+            cursor: 'pointer',       // shows hand
             transition: 'opacity 0.2s ease',
           }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.7')}
@@ -81,10 +82,23 @@ const portableTextComponents = {
         >
           {children}
         </a>
-      )
+      );
     },
   },
-}
+  block: {
+    normal: ({ children }) => <p style={{ marginBottom: '1.2rem', textAlign: 'left' }}>{children}</p>,
+    h2: ({ children }) => <h2 style={{ fontSize: '1.8rem', margin: '2rem 0 1rem', textAlign: 'left' }}>{children}</h2>,
+    h3: ({ children }) => <h3 style={{ fontSize: '1.4rem', margin: '1.5rem 0 0.8rem', textAlign: 'left' }}>{children}</h3>,
+  },
+  list: {
+    bullet: ({ children }) => <ul style={{ marginBottom: '1.2rem', paddingLeft: '1.5rem', textAlign: 'left' }}>{children}</ul>,
+    number: ({ children }) => <ol style={{ marginBottom: '1.2rem', paddingLeft: '1.5rem', textAlign: 'left' }}>{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }) => <li style={{ marginBottom: '0.5rem' }}>{children}</li>,
+    number: ({ children }) => <li style={{ marginBottom: '0.5rem' }}>{children}</li>,
+  },
+};
 
   const truncateWords = (text, wordLimit = 20) => {
     if (!text) return ''
