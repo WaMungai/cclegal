@@ -7,7 +7,7 @@ import { PracticeAreas } from "./components/PracticeAreas";
 import ClientShowcase from "./components/ClientShowcase";
 import BlogSection from "./components/Blog/BlogSection";
 import FeaturedBlogs from "./components/Blog/FeaturedBlogs";
-import BlogPage from "./components/Blog/BlogPage";
+
 import PostPage from "./components/Blog/PostPage";
 import Footer from "./components/Footer";
 import BookConsultation from "./components/BookConsultation";
@@ -99,8 +99,7 @@ export default function App({ posts }) {
           {/* Individual blog post */}
           <Route path="/blog/:slug" element={<PostPage />} />
 
-          {/* Blog page */}
-          <Route path="/blogpage" element={<BlogPage />} />
+         
         </Routes>
       </div>
     </Router>

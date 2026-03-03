@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Blog body overrides — must be after Tailwind base */
+.blog-body ul { list-style: disc !important; padding-left: 1.5rem !important; margin-bottom: 1rem !important; }
+.blog-body ol { list-style: decimal !important; padding-left: 1.5rem !important; margin-bottom: 1rem !important; }
+.blog-body li { margin-bottom: 0.5rem !important; display: list-item !important; }
+.blog-body a { color: #0070f3 !important; text-decoration: underline !important; }
+.blog-body blockquote { border-left: 4px solid #ccc !important; padding-left: 1rem !important; color: #555 !important; font-style: italic !important; }
+.blog-body p { margin-bottom: 1rem !important; }
+.blog-body h1 { font-size: 2rem !important; font-weight: bold !important; margin: 2rem 0 1rem !important; }
+.blog-body h2 { font-size: 1.8rem !important; font-weight: bold !important; margin: 1.5rem 0 !important; }
+.blog-body h3 { font-size: 1.4rem !important; font-weight: bold !important; margin: 1rem 0 !important; }
+.blog-body h4 { font-size: 1.2rem !important; font-weight: bold !important; margin: 0.8rem 0 !important; }
