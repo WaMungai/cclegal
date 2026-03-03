@@ -88,7 +88,7 @@ export default function App({ posts }) {
 
           {/* Blog section page */}
           <Route
-            path="/blog"
+            path="/insights"
             element={
               <div className="pt-16 max-w-7xl mx-auto px-6">
                 <BlogSection />

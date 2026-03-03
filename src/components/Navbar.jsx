@@ -23,7 +23,7 @@ const Navbar = () => {
     { name: "About Us", href: "#aboutus" },
     { name: "Practice Areas", href: "#practiceareas" },
     { name: "Team", href: "#partners" },
-    { name: "Insights", href: "/blog" },
+    { name: "Insights", href: "/insights" },
     { name: "Contact Us", href: "#footer" },
   ];
 

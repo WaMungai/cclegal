@@ -71,9 +71,9 @@ const portableTextComponents = {
           rel="noopener noreferrer"
           style={{
             color: '#0070f3 !important',           // Blue color to make it visible
-            textDecoration: 'underline', // Underline makes it obvious
-            fontWeight: 600,             // Optional: keeps bold styling
-            cursor: 'pointer',           // Pointer on hover
+            textDecoration: 'underline', 
+         
+            cursor: 'pointer',          
             transition: 'opacity 0.2s ease',
           }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.7')}
