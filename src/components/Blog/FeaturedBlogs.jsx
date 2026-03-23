@@ -112,7 +112,7 @@ export default function FeaturedBlogs() {
       {/* Button to full blog page */}
       <div style={{ textAlign: 'center', marginTop: '3rem' }}>
         <button
-          onClick={() => navigate('/blog')}
+          onClick={() => navigate('/insights')}
           style={{
             padding: '0.75rem 2rem',
             borderRadius: '8px',
